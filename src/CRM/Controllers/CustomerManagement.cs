@@ -47,7 +47,6 @@ namespace CRM.Controllers
         public IActionResult Gets()
         {
             var Get = DB.Customers;
-
             return PartialView("Gets", Get);
         }
 
@@ -74,7 +73,7 @@ namespace CRM.Controllers
                 msg = "Error is : " + error.Message;
                 return Json(new { valid = false, message = msg });
             }
-            return Json(new { valid = false, message = msg });
+            return Json(new { valid = true, message = msg });
         }
     }
 }
