@@ -57,7 +57,6 @@
                         $("#showuserRole").on("click", ".delete", function (e) {
                             var UserId = $(this).val();
                             var RoleId = $(this).attr("data-RoleId");
-
                             $.SmartMessageBox({
                                 title: "คำเตือน!",
                                 content: "ต้องการลบรายการนี้หรือไม่?",

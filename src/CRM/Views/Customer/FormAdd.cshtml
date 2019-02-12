@@ -1,0 +1,137 @@
+﻿@model CRM.Models.Customers
+
+<div id="content">
+    <section id="widget-grid" class="">
+        <div class="jarviswidget" id="wid-id-4" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
+            <header>
+                <h2><i class="fa fa-plus"></i> เพิ่มสิทธิ์</h2>
+            </header>
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <input class="form-control" type="text">
+                </div>
+                <div class="widget-body">
+
+                    @* Form *@
+                    <form id="FormAdd" class="form-horizontal"
+                          enctype="multipart/form-data"
+                          asp-antiforgery="true"
+                          data-bv-message="This value is not valid"
+                          data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+                          data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+                          data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+                        <fieldset>
+                            <legend style="color:red;">กรุณากรอกข้อมูลให้ครบถ้วน</legend>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">ชื่อบริษัท/องค์กร</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="CompanyName" placeholder="Tanasan Systems"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอกชื่อบริษัท/องค์กร"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">เลขประจำตัวผู้เสียภาษี</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="TaxId" placeholder="xxx-xxx-xxx-xxxx"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอกเลขประจำตัวผู้เสียภาษี"
+                                            data-bv-stringlength="true"
+                                           data-bv-stringlength-min="13"
+                                           data-bv-stringlength-max="13"
+                                           data-bv-stringlength-message="เลขประจำตัวผู้เสียภาษี 13 หลัก" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">ที่อยู่บริษัท/องค์กร</label>
+                                <div class="col-lg-6">
+                                    <textarea type="text" class="form-control" asp-for="Address"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอกที่อยู่บริษัท/องค์กร" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">หมายเลขโทรศัพท์</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="Tel" placeholder="02-931-6399"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอกหมายเลขโทรศัพท์" 
+                                            data-bv-stringlength="true"
+                                           data-bv-stringlength-min="9"
+                                           data-bv-stringlength-max="10"
+                                           data-bv-stringlength-message="หมายเลขโทรศัพท์อย่างน้อย 9"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">หมายเลขโทรสาร</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="Fax" placeholder="02-931-6399"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอกหมายเลขโทรสาร"
+                                           data-bv-stringlength="true"
+                                           data-bv-stringlength-min="9"
+                                           data-bv-stringlength-max="10"
+                                           data-bv-stringlength-message="หมายเลขโทรสารอย่างน้อย 9" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">โทรศัพท์มือถือ</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="Mobile" placeholder="02-931-6399"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอกโทรศัพท์มือถือ"
+                                           data-bv-stringlength="true"
+                                           data-bv-stringlength-min="9"
+                                           data-bv-stringlength-max="10"
+                                           data-bv-stringlength-message="หมายเลขโทรศัพท์มือถือ 10 หลัก" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-xs-3 col-md-3 col-lg-3 control-label">อีเมล</label>
+                                <div class="col-xs-8 col-md-8 col-lg-8">
+                                    <input class="form-control" type="email" asp-for="Email"
+                                           placeholder="example@domain.com"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอกอีเมล"
+                                           data-bv-emailaddress="true"
+                                           data-bv-emailaddress-message="อีเมลไม่ถูกต้อง" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">ผู้ติดต่อหลัก</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="ContactPerson"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอกผู้ติดต่อหลัก" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success" type="submit" id="submit">บันทึก</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

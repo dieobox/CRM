@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using CRM.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using CRM.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Authorization;
+using CRM.ViewModels.LicenseManagement;
 
 namespace CRM.Controllers
 {
     [Authorize]
-    public class HomeController : Controller
+    public class LicenseManagement : Controller
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
@@ -22,7 +23,7 @@ namespace CRM.Controllers
         private ApplicationDbContext DB;
         private IHostingEnvironment _environment;
 
-        public HomeController(
+        public LicenseManagement(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             RoleManager<IdentityRole> roleManager,
@@ -37,9 +38,31 @@ namespace CRM.Controllers
             _environment = environment;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
+            
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Gets()
+        {
+            var ViewModel = new List<GetLicenseViewModels>();
+            foreach (var Get in DB.Licenses)
+            {
+                var Model = new GetLicenseViewModels();
+                Model.Customername = Get.CustomerId;
+                Model.ClientsLimit = Get.ClientsLimit;
+                Model.ConsoleLimit = Get.ConsoleLimit;
+                Model.LicenseId = Get.LicenseId;
+                Model.LicensePlan = Get.LicensePlan;
+                Model.Amount = 15;
+                Model.StartDate = DateTime.Now;
+                Model.EndDate = DateTime.Now;
+                ViewModel.Add(Model);
+            }
+            return PartialView("Gets", ViewModel);
         }
     }
 }
