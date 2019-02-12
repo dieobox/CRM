@@ -1,11 +1,11 @@
 ﻿$(function () {
-    $.get("/Customer/Gets", function (Result) {
+    $.get("/CustomerManagement/Gets", function (Result) {
         $("#JsonShow").html(Result);
         Datatable();
     });
 
     $("#add").click(function () {
-        $.get("/Customer/FormAdd", function (Result) {
+        $.get("/CustomerManagement/FormAdd", function (Result) {
             $("#MomdalFormAdd").html(Result);
             $("#ButtonAdd").modal();
 
@@ -18,7 +18,7 @@
                     $.ajax(
                     {
                         type: "POST",
-                        url: "/Customer/Add",
+                        url: "/CustomerManagement/Add",
                         contentType: false,
                         processData: false,
                         data: Data,
@@ -32,7 +32,7 @@
                                     timeout: 2000
                                 });
                                 setTimeout(function () {
-                                    window.location.href = "/UsersManagement/Index";
+                                    window.location.href = "/CustomerManagement/Index";
                                 }, 1000)
                             } else {
                                 $.smallBox({
@@ -43,7 +43,7 @@
                                     timeout: 2000
                                 });
                                 setTimeout(function () {
-                                    window.location.href = "/UsersManagement/Index";
+                                    window.location.href = "/CustomerManagement/Index";
                                 }, 1000)
                             }
                         }

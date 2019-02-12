@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace CRM.Controllers
 {
     [Authorize]
-    public class CustomerController : Controller
+    public class CustomerManagement : Controller
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
@@ -22,7 +22,7 @@ namespace CRM.Controllers
         private ApplicationDbContext DB;
         private IHostingEnvironment _environment;
 
-        public CustomerController(
+        public CustomerManagement(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             RoleManager<IdentityRole> roleManager,
@@ -59,13 +59,13 @@ namespace CRM.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Add(Customers model)
+        public IActionResult Add(Customers Model)
         {
             string msg = "";
             try
             {
-                model.CustomerId = "askdjaosijdiefraefe";
-                DB.Customers.Add(model);
+                Model.CustomerId = Guid.NewGuid().ToString("N");
+                DB.Customers.Add(Model);
                 DB.SaveChanges();
                 msg = "บันทุกสำเร็จ";
             }
