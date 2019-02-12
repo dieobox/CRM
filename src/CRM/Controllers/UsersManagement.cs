@@ -49,6 +49,7 @@ namespace DEPIntranet.UsersManagement
         }
         
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Index()
         {
             return View();
@@ -56,6 +57,7 @@ namespace DEPIntranet.UsersManagement
         
         [HttpGet]
         [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Gets(int Type)
         {
             var ViewModel = new List<ListsUserViewModel>();
@@ -73,6 +75,7 @@ namespace DEPIntranet.UsersManagement
         }
         
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public IActionResult FormAddUser()
         {
             return PartialView("FormAddUser");
@@ -81,6 +84,7 @@ namespace DEPIntranet.UsersManagement
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult>  AddUser(AddUserViewModel model, IFormFile PictureFile)
         {
             string msg = "";
@@ -148,6 +152,7 @@ namespace DEPIntranet.UsersManagement
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public IActionResult FormEditUser(string UserId)
         {
             var Model = new AddUserViewModel();
@@ -160,11 +165,11 @@ namespace DEPIntranet.UsersManagement
             Model.PictureFile = Get.PictureFile;
             return PartialView("FormEditUser", Model);
         }
-
-
+        
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> EditUser(AddUserViewModel model, IFormFile PictureFile, string OldPictureFile, string OldPassword)
         {
             string msg = "";
@@ -250,6 +255,184 @@ namespace DEPIntranet.UsersManagement
             }
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> DeleteUser(string UserId)
+        {
+            string msg = "";
+            try
+            {
+                var CurrentUser = await _userManager.FindByIdAsync(_userManager.GetUserId(User));
+                var Upload = Path.Combine(_environment.WebRootPath, "uploads/users/");
+                string OldPictureFile = DB.Users.Where(a => a.Id == UserId).Select(b => b.PictureFile).SingleOrDefault();
+                if (OldPictureFile != null)
+                {
+                    string oldfilepath = Path.Combine(Upload, OldPictureFile);
+                    // ลบ File เดิม
+                    if (System.IO.File.Exists(oldfilepath))
+                    {
+                        System.IO.File.Delete(oldfilepath);
+                    }
+                }
+
+                // delete all role user
+                if (DB.UserRoles.Where(w => w.UserId == UserId).Count() > 0)
+                {
+                    var GetRoles = DB.UserRoles.Where(w => w.UserId == UserId);
+                    DB.RemoveRange(GetRoles);
+                    DB.SaveChanges();
+                }
+
+                var Model = await DB.Users.Where(d => d.Id == UserId).SingleAsync();
+                await _userManager.DeleteAsync(Model);
+                await DB.SaveChangesAsync();
+                msg = "ลบข้อมูลสำเร็จ";
+
+            }
+            catch (Exception e)
+            {
+                msg = "Error is : " + e.Message;
+                return Json(new { valid = false, message = msg });
+            }
+            return Json(new { valid = true, message = msg });
+        }
+
+        // Role Management
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public IActionResult Roles()
+        {
+            return View("Roles");
+        }
+
+        [Authorize]
+        [HttpGet]
+        [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> GetRoles()
+        {
+            var Gets = await _roleManager.Roles.ToListAsync();
+            var Roles = new List<RoleViewModel>();
+            foreach (var Get in Gets)
+            {
+                var Role = new RoleViewModel();
+                Role.RoleName = Get.Name;
+                Role.RoleId = Get.Id;
+
+                Roles.Add(Role);
+            }
+
+
+            return PartialView("GetRoles", Roles);
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public IActionResult FormAddRole()
+        {
+            return PartialView("FormAddRole");
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddRole(RoleViewModel model)
+        {
+            string msg = "";
+            try
+            {
+                var Result = await _roleManager.CreateAsync(new IdentityRole(model.RoleName));
+                if (Result.Succeeded)
+                {
+                    return Json(new { valid = true, message = "บันทึกข้อมูลสำเร็จ" });
+                }
+                else
+                {
+                    foreach (var Error in Result.Errors)
+                    {
+                        msg = Error.Description + "<br/>";
+                    }
+                    return Json(new { valid = false, message = msg });
+                }
+            }
+            catch (Exception e)
+            {
+                msg = "Error is : " + e.Message;
+                return Json(new { valid = false, message = msg });
+            }
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public async Task<IActionResult> FormEditRole(string RoleId)
+        {
+            var Get = await _roleManager.Roles.Where(i => i.Id == RoleId).FirstOrDefaultAsync();
+            var ViewModel = new RoleViewModel();
+            ViewModel.RoleId = Get.Id;
+            ViewModel.RoleName = Get.Name;
+
+
+            return PartialView("FormEditRole", ViewModel);
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditRole(RoleViewModel model)
+        {
+            string msg = "";
+            try
+            {
+                IdentityRole thisRole = await _roleManager.FindByIdAsync(model.RoleId);
+                thisRole.Name = model.RoleName;
+                var Result = await _roleManager.UpdateAsync(thisRole);
+                if (Result.Succeeded)
+                {
+                    return Json(new { valid = true, message = "แก้ไขข้อมูลสำเร็จ" });
+                }
+                else
+                {
+                    foreach (var Error in Result.Errors)
+                    {
+                        msg = Error.Description + "<br/>";
+                    }
+                    return Json(new { valid = false, message = msg });
+                }
+            }
+            catch (Exception e)
+            {
+                msg = "Error is : " + e.Message;
+                return Json(new { valid = false, message = msg });
+            }
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public async Task<IActionResult> DeleteRole(string RoleId)
+        {
+            string msg = "";
+            try
+            {
+                if (await DB.UserRoles.Where(w => w.RoleId == RoleId).CountAsync() > 0)
+                {
+                    return Json(new { valid = false, message = "ไม่สามารถลบข้อมูลนี้ได้" });
+                }
+
+                IdentityRole ThisRole = await _roleManager.FindByIdAsync(RoleId);
+                var Result = await _roleManager.DeleteAsync(ThisRole);
+                if (Result.Succeeded)
+                {
+                    return Json(new { valid = true, message = "ลบข้อมูลสำเร็จ" });
+                }
+            }
+            catch (Exception e)
+            {
+                msg = "Error is : " + e.Message;
+                return Json(new { valid = false, message = msg });
+            }
+
+            return Json(new { valid = false, message = msg });
+        }
 
         [Authorize(Roles = "Administrator")]
         [HttpGet]
@@ -270,8 +453,7 @@ namespace DEPIntranet.UsersManagement
 
             return PartialView("GetUserRoles", UserRolesViewModel);
         }
-
-
+        
         [Authorize(Roles = "Administrator")]
         [HttpGet]
         public async Task<IActionResult> AddUSerRole(string UserId, string RoleId)
@@ -323,6 +505,13 @@ namespace DEPIntranet.UsersManagement
             }
             return Json(new { valid = true, message = msg });
         }
+
+
+
+
+
+
+
 
 
         // Other Action
