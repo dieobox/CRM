@@ -75,5 +75,31 @@ namespace CRM.Controllers
             }
             return Json(new { valid = true, message = msg });
         }
+
+        [HttpGet]
+        public IActionResult FormEdit(string CustomerId)
+        {
+            var Get = DB.Customers.Where(w => w.CustomerId == CustomerId).FirstOrDefault();
+            return PartialView("FormEdit", Get);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Customers model)
+        {
+            string msg = "";
+            try
+            {
+                DB.Customers.Update(model);
+                DB.SaveChanges();
+                msg = "บันทึกสำเร็จ";
+            }
+            catch (Exception error)
+            {
+                msg = "Error is : " + error.Message;
+                return Json(new { valid = false, message = msg });
+            }
+            return Json(new { valid = true, message = msg });
+        }
     }
 }

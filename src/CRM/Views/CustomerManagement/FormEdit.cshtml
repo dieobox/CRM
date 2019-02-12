@@ -14,7 +14,7 @@
                 <div class="widget-body">
 
                     @* Form *@
-                    <form id="FormAdd" class="form-horizontal"
+                    <form id="FormEdit" class="form-horizontal"
                           enctype="multipart/form-data"
                           asp-antiforgery="true"
                           data-bv-message="This value is not valid"
@@ -52,8 +52,7 @@
                                 <div class="col-lg-6">
                                     <textarea class="form-control" asp-for="Address"
                                               data-bv-notempty="true"
-                                              data-bv-notempty-message="กรุณากรอกที่อยู่บริษัท/องค์กร">
-                                        </textarea>
+                                              data-bv-notempty-message="กรุณากรอกที่อยู่บริษัท/องค์กร">@Model.Address</textarea>
                                 </div>
                             </div>
                         </fieldset>
@@ -122,6 +121,7 @@
                                 </div>
                             </div>
                         </fieldset>
+                        <input type="hidden" asp-for="CustomerId">
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-12">

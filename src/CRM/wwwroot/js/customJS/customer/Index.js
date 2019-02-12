@@ -2,6 +2,56 @@
     $.get("/CustomerManagement/Gets", function (Result) {
         $("#JsonShow").html(Result);
         Datatable();
+
+        $("#JsonShow").on("click", ".edit", function () {
+            var Id = $(this).val();
+            $.get("/CustomerManagement/FormEdit", { "CustomerId": Id }, function (Result) {
+                $("#MomdalFormEdit").html(Result);
+                $("#ButtonEdit").modal();
+
+                //Validate Form
+                $('#FormEdit').bootstrapValidator();
+                $("#submit").click(function () {
+                    $('#FormEdit').data("bootstrapValidator").validate();
+                    if ($('#FormEdit').data("bootstrapValidator").isValid() == true) {
+                        var Data = new FormData($("#FormEdit")[0]);
+                        $.ajax(
+                        {
+                            type: "POST",
+                            url: "/CustomerManagement/Edit",
+                            contentType: false,
+                            processData: false,
+                            data: Data,
+                            success: function (response) {
+                                if (response.valid == true) {
+                                    $.smallBox({
+                                        title: response.message,
+                                        content: "<i class='fa fa-clock-o'></i> <i>" + response.message + "</i>",
+                                        color: "#296191", // red color code #FB0404
+                                        iconSmall: "fa fa-thumbs-up bounce animated",
+                                        timeout: 2000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.href = "/CustomerManagement/Index";
+                                    }, 1000)
+                                } else {
+                                    $.smallBox({
+                                        title: response.message,
+                                        content: "<i class='fa fa-clock-o'></i> <i>" + response.message + "</i>",
+                                        color: "#FB0404", // red color code #FB0404
+                                        iconSmall: "fa fa-thumbs-up bounce animated",
+                                        timeout: 2000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.href = "/CustomerManagement/Index";
+                                    }, 1000)
+                                }
+                            }
+                        });
+                    }
+                })
+            });
+        });
     });
 
     $("#add").click(function () {
