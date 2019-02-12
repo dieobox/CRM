@@ -12,6 +12,6 @@ namespace CRM.ViewModels.UsersManagement
         public string UserId { get; set; }
         public string Username { get; set; }
         public string Fullname { get; set; }
-        public string Orgname { get; set; }
+        public string mail { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model DEPIntranet.ViewModels.UsersManagement.AddUserViewModel
+﻿@model CRM.ViewModels.UsersManagement.AddUserViewModel
 
 <div id="content">
     <section id="widget-grid" class="">
@@ -21,301 +21,38 @@
                           data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
                           data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
                           data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
-                        <!--- DPIS --->
+
                         <fieldset>
                             <legend style="color:red;">กรุณากรอกข้อมูลให้ครบถ้วน</legend>
                             <div class="form-group">
-                                <label class="col-xs-3 col-md-3 col-lg-3 control-label">ประเภทข้าราชการ</label>
+                                <label class="col-xs-3 col-md-3 col-lg-3 control-label">อีเมล</label>
                                 <div class="col-xs-8 col-md-8 col-lg-8">
-                                    <select asp-for="Type" style="width:100%"
-                                        data-bv-notempty="true"
-                                        data-bv-notempty-message="กรุณาเลือกประเภทข้าราชการ">
-                                        <option value="">---เลือกประเภทข้าราชการ---</option>
-                                        <option value="1">ข้าราชการ</option>
-                                        <option value="2">ลูกจ้างประจำ</option>
-                                        <option value="3">พนักงานราชการ</option>
-                                        <option value="4">จ้างเหมาโครงการ</option>
-                                        <option value="5">พนักงานกองทุนฯ</option>
-                                    </select>
+                                    <input class="form-control" type="email" asp-for="Email"
+                                           placeholder="example@domain.com"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอกอีเมล"
+                                           data-bv-emailaddress="true"
+                                           data-bv-emailaddress-message="อีเมลไม่ถูดต้อง" />
                                 </div>
                             </div>
                         </fieldset>
-                        <!--- DPIS -->
-                        <div id="type1">
-                            <fieldset>
-                                <div class="form-group">
-                                    <label class="col-xs-3 col-md-3 col-lg-3 control-label">กำหนดให้เป็นหัวหน้า</label>
-                                    <div class="col-xs-8 col-md-8 col-lg-8">
-                                        <select asp-for="IsOrgHead" class="IsOrgHead" style="width:100%;">
-                                            <option value="false">ไม่ต้องการ</option>
-                                            <option value="true">ต้องการ</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <!--- INSERT -->
-                        <div id="type2"  >
-                            <fieldset>
-                                <div class="form-group">
-                                    <label class="col-xs-3 col-md-3 col-lg-3 control-label">สังกัด</label>
-                                    <div class="col-xs-8 col-md-8 col-lg-8">
-                                        <select asp-for="OrgCode" style="width:100%"></select>
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-group">
-                                    <label class="col-xs-3 col-md-3 col-lg-3 control-label">คำนำหน้า</label>
-                                    <div class="col-xs-8 col-md-8 col-lg-8">
-                                        <input type="text" class="form-control" asp-for="Title" placeholder="Name title"
-                                               data-bv-notempty="true"
-                                               data-bv-notempty-message="กรุณาคำนำหน้า" />
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-group">
-                                    <label class="col-xs-3 col-md-3 col-lg-3 control-label">ชื่อ-นามสกุล</label>
-                                    <div class="col-xs-4 col-md-4 col-lg-4">
-                                        <input type="text" class="form-control" asp-for="FirstName" placeholder="First Name"
-                                               data-bv-notempty="true"
-                                               data-bv-notempty-message="กรุณากรอกชื่อ" />
-                                    </div>
-                                    <div class="col-xs-4 col-md-4 col-lg-4">
-                                        <input type="text" class="form-control" asp-for="LastName" placeholder="Last Lame"
-                                               data-bv-notempty="true"
-                                               data-bv-notempty-message="กรุณากรอกนามสกุล" />
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-group">
-                                    <label class="col-xs-3 col-md-3 col-lg-3 control-label">เลขที่บัตรประชาชน</label>
-                                    <div class="col-xs-8 col-md-8 col-lg-8">
-                                        <input type="text" class="form-control" asp-for="PersonalCode" maxlength="13" placeholder="Citizen ID"
-                                               data-bv-notempty="true"
-                                               data-bv-notempty-message="กรุณาระบุเลขที่บัตรประชาชน"
-                                               data-bv-regexp="true"
-                                               data-bv-regexp-regexp="^[_A-z0-9]{1,}$"
-                                               data-bv-regexp-message="เลขที่บัตรประชาชน สามารถกรอกได้เฉพาะเลขเท่านั้น"
-                                               data-bv-stringlength="true"
-                                               data-bv-stringlength-min="13"
-                                               data-bv-stringlength-message="ระบุเลขประจำตัวประชาชนให้ถูกต้อง">
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-group">
-                                    <label class="col-xs-3 col-md-3 col-lg-3 control-label">รหัสผู้ใช้เครื่องสแกนนิ้ว</label>
-                                    <div class="col-xs-8 col-md-8 col-lg-8">
-                                        <input type="text" class="form-control" asp-for="TimeAttendanceUserId" placeholder="Finger ID"
-                                               data-bv-notempty="true"
-                                               data-bv-notempty-message="กรุณากรอกรหัสผู้ใช้เครื่องสแกนนิ้ว">
-                                    </div>
-                                </div>
-                            </fieldset>
-                            
-                            <fieldset>
-                                <div class="form-group">
-                                    <label class="col-xs-3 col-md-3 col-lg-3 control-label">วัน/เดือน/ปี เกิด</label>
-                                    <div class="col-xs-2 col-md-2 col-lg-2">
-                                        <select id="day1" name="day1" style="width:100%">
-                                            @{
-                                                int days = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-                                            }
-                                            @for (int i = 1; i <= days; i++)
-                                            {
-                                                if (i == DateTime.Now.Day)
-                                                {
-                                                    <option value="@i" selected="selected">@i.ToString()</option>
-                                                }
-                                                else
-                                                {
-                                                    <option value="@i">@i.ToString()</option>
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-3 col-md-3 col-lg-3">
-                                        <select id="month1" name="month1" style="width:100%" >
-                                            @{
-                                                string[] MonthName = { "", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" };
-                                                for (int m = 1; m < MonthName.Count();)
-                                                {
-                                                    if (DateTime.Now.Month == m)
-                                                    {
-                                                        <option value="@m" selected>@MonthName[m]</option>
-                                                    }
-                                                    else
-                                                    {
-                                                        <option value="@m">@MonthName[m]</option>
-                                                    }
-                                                    m++;
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-3 col-md-3 col-lg-3">
-                                        <select id="year1" name="year1" style="width:100%">
-                                            @{
-                                                int Year = DateTime.Now.Year;
-                                                for (int y = Year; y >= (DateTime.Now.Year - 60); y--)
-                                                {
-                                                    if (y == DateTime.Now.Year)
-                                                    {
-                                                        <option value="@y" selected>@(y + 543)</option>
-                                                    }
-                                                    else
-                                                    {
-                                                        <option value="@y">@(y + 543)</option>
-                                                    }
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-group">
-                                    <label class="col-xs-3 col-md-3 col-lg-3 control-label">วันที่เริ่มปฎิบัติงาน</label>
-                                    <div class="col-xs-2 col-md-2 col-lg-2">
-                                        <select id="day2" name="day2" style="width:100%">
-                                            @{
-                                                int days1 = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-                                            }
-                                            @for (int i = 1; i <= days1; i++)
-                                            {
-                                                if (i == DateTime.Now.Day)
-                                                {
-                                                    <option value="@i" selected="selected">@i.ToString()</option>
-                                                }
-                                                else
-                                                {
-                                                    <option value="@i">@i.ToString()</option>
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-3 col-md-3 col-lg-3">
-                                        <select id="month2" name="month2" style="width:100%">
-                                            @{
-                                                string[] MonthName1 = { "", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" };
-                                                for (int m = 1; m < MonthName1.Count();)
-                                                {
-                                                    if (DateTime.Now.Month == m)
-                                                    {
-                                                        <option value="@m" selected>@MonthName1[m]</option>
-                                                    }
-                                                    else
-                                                    {
-                                                        <option value="@m">@MonthName1[m]</option>
-                                                    }
-                                                    m++;
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-3 col-md-3 col-lg-3">
-                                        <select id="year2" name="year2" style="width:100%">
-                                            @{
-                                                int Year1 = DateTime.Now.Year;
-                                                for (int y = Year1; y >= (DateTime.Now.Year - 60); y--)
-                                                {
-                                                    if (y == DateTime.Now.Year)
-                                                    {
-                                                        <option value="@y" selected>@(y + 543)</option>
-                                                    }
-                                                    else
-                                                    {
-                                                        <option value="@y">@(y + 543)</option>
-                                                    }
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-group">
-                                    <label class="col-xs-3 col-md-3 col-lg-3 control-label">วันที่สิ้นสุดการปฎิบัติงาน</label>
-                                    <div class="col-xs-2 col-md-2 col-lg-2">
-                                        <select id="day3" name="day3" style="width:100%">
-                                            @{
-                                                int days2 = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-                                            }
-                                            @for (int i = 1; i <= days; i++)
-                                            {
-                                                if (i == DateTime.Now.Day)
-                                                {
-                                                    <option value="@i" selected="selected">@i.ToString()</option>
-                                                }
-                                                else
-                                                {
-                                                    <option value="@i">@i.ToString()</option>
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-3 col-md-3 col-lg-3">
-                                        <select id="month3" name="month3" style="width:100%">
-                                            @{
-                                                string[] MonthName2 = { "", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" };
-                                                for (int m = 1; m < MonthName.Count();)
-                                                {
-                                                    if (DateTime.Now.Month == m)
-                                                    {
-                                                        <option value="@m" selected>@MonthName2[m]</option>
-                                                    }
-                                                    else
-                                                    {
-                                                        <option value="@m">@MonthName2[m]</option>
-                                                    }
-                                                    m++;
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-3 col-md-3 col-lg-3">
-                                        <select id="year3" name="year3" style="width:100%">
-                                            @{
-                                                int Year2 = DateTime.Now.Year + 50;
-                                                for (int y = Year2; y >= (DateTime.Now.Year - 60); y--)
-                                                {
-                                                    if (y == DateTime.Now.Year)
-                                                    {
-                                                        <option value="@y" selected>@(y + 543)</option>
-                                                    }
-                                                    else
-                                                    {
-                                                        <option value="@y">@(y + 543)</option>
-                                                    }
-                                                }
-                                            }
-                                        </select>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <!--- END DPIS --->
                         <fieldset>
-                            <legend style="color:red;">รายละเอียดอื่นๆ</legend>
                             <div class="form-group">
-                                <label class="col-xs-3 col-md-3 col-lg-3 control-label">ชื่อใช้งานระบบ</label>
+                                <label class="col-xs-3 col-md-3 col-lg-3 control-label">ชื่อ</label>
                                 <div class="col-xs-8 col-md-8 col-lg-8">
-                                    <input type="text" class="form-control" asp-for="UserName"
-                                           placeholder="Username"
-                                           data-bv-message="The username is not valid"
+                                    <input type="text" class="form-control" asp-for="FirstName"
                                            data-bv-notempty="true"
-                                           data-bv-notempty-message="กรุณากรอกนามชื่อใช้งานระบบ"
-                                           data-bv-regexp="true"
-                                           data-bv-regexp-regexp="^[a-zA-Z0-9_\.]+$"
-                                           data-bv-regexp-message="ชื่อใช้งานสามารถกรอกได้เฉพาะตัวอักษรเท่านั้น"
-                                           data-bv-stringlength="true"
-                                           data-bv-stringlength-min="6"
-                                           data-bv-stringlength-max="30"
-                                           data-bv-stringlength-message="ชื่อใช้งานอต้อง 6 ถึง 12 เท่านั้น" />
+                                           data-bv-notempty-message="กรุณากรอกชื่อ" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-xs-3 col-md-3 col-lg-3 control-label">นามสกุล</label>
+                                <div class="col-xs-8 col-md-8 col-lg-8">
+                                    <input type="text" class="form-control" asp-for="LastName"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอกนามสกุล" />
                                 </div>
                             </div>
                         </fieldset>
@@ -356,33 +93,10 @@
                             </div>
                         </fieldset>
                         <fieldset>
-
-                            <div class="form-group">
-                                <label class="col-xs-3 col-md-3 col-lg-3 control-label">รูปประจำตัว</label>
-                                <div class="col-xs-8 col-md-8 col-lg-8">
-                                    <input type="file" class="form-control" asp-for="PictureFile" accept="image/*">
-                                </div>
-                            </div>
-                        </fieldset>
-
-                        <fieldset>
-                            <div class="form-group">
-                                <label class="col-xs-3 col-md-3 col-lg-3 control-label">อีเมล</label>
-                                <div class="col-xs-8 col-md-8 col-lg-8">
-                                    <input class="form-control" type="email" asp-for="Email"
-                                           placeholder="example@domain.com"
-                                           data-bv-notempty="true"
-                                           data-bv-notempty-message="กรุณากรอกอีเมล"
-                                           data-bv-emailaddress="true"
-                                           data-bv-emailaddress-message="อีเมลไม่ถูดต้อง" />
-                                </div>
-                            </div>
-                        </fieldset>
-                        <fieldset>
                             <div class="form-group">
                                 <label class="col-xs-3 col-md-3 col-lg-3 control-label">หมายเลขโทรศัพท์(มือถือ)</label>
                                 <div class="col-xs-8 col-md-8 col-lg-8">
-                                    <input class="form-control" type="text" asp-for="PhoneNumber" placeholder="09000000000" value="023543388"
+                                    <input class="form-control" type="text" asp-for="PhoneNumber" placeholder="09000000000"
                                            data-bv-notempty="true"
                                            data-bv-notempty-message="กรุณากรอกหมายเลขโทรศัพท์(มือถือ)"
                                            data-bv-stringlength="true"
@@ -392,6 +106,15 @@
                                 </div>
                             </div>
                         </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-xs-3 col-md-3 col-lg-3 control-label">รูปประจำตัว</label>
+                                <div class="col-xs-8 col-md-8 col-lg-8">
+                                    <input type="file" class="form-control" asp-for="PictureFile" accept="image/*">
+                                </div>
+                            </div>
+                        </fieldset>
+                        
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-12">

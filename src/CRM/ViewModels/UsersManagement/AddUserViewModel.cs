@@ -14,8 +14,8 @@ namespace CRM.ViewModels.UsersManagement
         public string UserId { get; set; }
 
         [Required]
-        [Display(Name = "Title")]
-        public string Title { get; set; }
+        [Display(Name = "Type")]
+        public string Type { get; set; }
 
         [Required]
         [Display(Name = "FirstName")]
@@ -52,61 +52,7 @@ namespace CRM.ViewModels.UsersManagement
         [Required]
         [Display(Name = "PhoneNumber")]
         public string PhoneNumber { get; set; }
-
-        [Required]
-        [Display(Name = "OrgId")]
-        public int OrgId { get; set; }
-
-        [Required]
-        [Display(Name = "PersonalCode")]
-        public string PersonalCode { get; set; }
-
-        [Required]
-        [Display(Name = "BirthDate")]
-        public DateTime BirthDate { get; set; }
-
-        [Required]
-        [Display(Name = "StartDate")]
-        public DateTime StartDate { get; set; }
-
-        [Required]
-        [Display(Name = "RetireDate")]
-        public DateTime RetireDate { get; set; }
-
-        [Required]
-        [Display(Name = "Status")]
-        public int Status { get; set; }
-
-        [Required]
-        [Display(Name = "OrgCode")]
-        public int OrgCode { get; set; }
-
-        [Required]
-        [Display(Name = "OrgName")]
-        public string OrgName { get; set; }
-
-        [Required]
-        [Display(Name = "CreateDate")]
-        public DateTime CreateDate { get; set; }
-
-        [Required]
-        [Display(Name = "UpdateDate")]
-        public DateTime UpdateDate { get; set; }
-
-        [Required]
-        [Display(Name = "Type")]
-        public int Type { get; set; }
-
-        [Required]
-        [Display(Name = "TimeAttendanceUserId")]
-        public int TimeAttendanceUserId { get; set; }
-
-        [Required]
-        [Display(Name = "PersoanlId")]
-        public int PersoanlId { get; set; }
-
-        [Required]
-        [Display(Name = "IsOrgHead")]
-        public bool IsOrgHead { get; set; }
+        
+    
     }
 }

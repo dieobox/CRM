@@ -5,9 +5,9 @@
         <thead>
             <tr>
                 <th class="text-align-center">ลำดับ</th>
-                <th class="text-align-center">ชื่อเข้าใช้งาน</th>
-                <th class="text-align-center">ชื่อ - นามสกุล</th>
-                <th>สังกัด</th>
+                <th>ชื่อเข้าใช้งาน</th>
+                <th>ชื่อ-นามสกุล</th>
+                <th>เมล</th>
                 <th></th>
             </tr>
         </thead>
@@ -20,7 +20,7 @@
                         <td class="text-align-center">@Rows.</td>
                         <td>@list.Username </td>
                         <td>@list.Fullname</td>
-                        <td>@list.Orgname</td>
+                        <td>@list.mail</td>
                         <td class="text-align-center">
                             <button class="btn btn-warning btn-xs edit"   value="@list.UserId" style="font-size:10px;" data-toggle="modal" id="edit" data-target="#ButtonEdit"><i class="fa fa-pencil"></i> แก้ไข</button>
                             <button class="btn btn-danger btn-xs  delete" value="@list.UserId"  style="font-size:10px;"><i class="fa fa-eraser"></i> ลบ</button>
