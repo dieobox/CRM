@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "จัดการสิทธิ์การใช้งานเมนู";
+    
+}
+<input type="hidden" id="MenuId" value="@ViewBag.MenuId" />
+<div id="content">
+    <section id="widget-grid" class="">
+        <div class="row">
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>@ViewData["Title"]</h2>
+                    </header>
+                    <div>
+                        <div class="jarviswidget-editbox"></div>
+                        <div class="widget-body no-padding margin-top-5 margin-left-5">
+                            <label><strong>สิทธิ์ของผู้ใช้ : </strong></label> @Html.DropDownList("filter", (IEnumerable<SelectListItem>)ViewBag.Filter, new { @class = "form-group", style = "width:30%" })
+                        @* RoleMenu *@  
+                        <div id="ShowRoleMenu"></div>
+
+                        
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>
+
+    @section Scripts{
+        <!-- PAGE RELATED PLUGIN(S) -->
+        <script src="~/js/plugin/datatables/jquery.dataTables.min.js"></script>
+        <script src="~/js/plugin/datatables/dataTables.colVis.min.js"></script>
+        <script src="~/js/plugin/datatables/dataTables.tableTools.min.js"></script>
+        <script src="~/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+        <script src="~/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+        <script src="~/js/customJS/menus/ManageRoleMenu.js"></script>
+    }

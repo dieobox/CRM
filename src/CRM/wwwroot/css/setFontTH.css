@@ -1,0 +1,13 @@
+﻿/*
+    * Add new font
+*/
+
+
+@font-face {
+    font-family: Helvetica;
+    src: url('/fonts/fontsKanit-Light/Kanit-Light.ttf');
+}
+
+body {
+    font-family:Helvetica;
+}

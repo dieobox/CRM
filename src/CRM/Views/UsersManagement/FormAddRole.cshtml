@@ -1,0 +1,51 @@
+﻿@model DEPIntranet.ViewModels.UsersManagement.RoleViewModel
+
+<div id="content">
+    <section id="widget-grid" class="">
+        <div class="jarviswidget" id="wid-id-4" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
+            <header>
+                <h2><i class="fa fa-plus"></i> เพิ่มสิทธิ์</h2>
+            </header>
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <input class="form-control" type="text">
+                </div>
+                <div class="widget-body">
+
+                    @* Form *@
+                    <form id="FormAddRole" class="form-horizontal"
+                          enctype="multipart/form-data"
+                          asp-antiforgery="true"
+                          data-bv-message="This value is not valid"
+                          data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+                          data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+                          data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+                        <fieldset>
+                            <legend style="color:red;">กรุณากรอกข้อมูลให้ครบถ้วน</legend>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">ชื่อสิทธิ์</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="RoleName" placeholder="Administrator"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอกชื่อสิทธิ์เป็นภาษาอังกฤษเท่านั้น"
+                                           data-bv-regexp="true"
+                                           data-bv-regexp-regexp="^[a-zA-Z0-9_\.]+$"
+                                           data-bv-regexp-message="ชื่อใช้งานสามารถกรอกได้เฉพาะตัวอักษรเท่านั้น" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success" type="submit" id="submit">บันทึก</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

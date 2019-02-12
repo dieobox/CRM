@@ -1,0 +1,72 @@
+﻿@model IEnumerable<CRM.ViewModels.Menus.RoleMenuViewModel>
+<nav id="menu">
+    <ul>
+        @foreach (var MainMenu in Model.Where(a => a.ParentId == 0).OrderBy(b => b.Position))
+        {
+            @if(Model.Where(a => a.ParentId == MainMenu.MenuItemId).Count() == 0)
+            { 
+                @if (MainMenu.MenuType == true)
+                {
+                    <li class="">
+                        <a href="@Url.Action(MainMenu.Action, MainMenu.Controller)"><i class="fa @MainMenu.Icon"></i> <span class="menu-item-parent">@MainMenu.MenuItemName</span></a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="@MainMenu.Url" ><i class="fa @MainMenu.Icon"></i> <span class="menu-item-parent">@MainMenu.MenuItemName</span></a>
+                    </li>
+                }
+            }
+            else
+            {
+                <li class="top-menu-invisible">
+                    <a href="#" title="@MainMenu.MenuItemName"><i class="fa @MainMenu.Icon"></i> <span class="menu-item-parent">@MainMenu.MenuItemName</span></a>
+                    <ul>
+                        @foreach (var SubMenu in Model.Where(a => a.ParentId == MainMenu.MenuItemId).OrderBy(b => b.Position))
+                        {
+                            @if (Model.Where(a => a.ParentId == SubMenu.MenuItemId).Count() == 0)
+                            {
+                                @if (SubMenu.MenuType == true)
+                                {
+                                    <li class="">
+                                        <a href="@Url.Action(SubMenu.Action, SubMenu.Controller)"><i class="fa @SubMenu.Icon"></i> <span class="menu-item-parent">@SubMenu.MenuItemName</span></a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="@SubMenu.Url" ><i class="fa @SubMenu.Icon"></i> <span class="menu-item-parent">@SubMenu.MenuItemName</span></a>
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                <li class="">
+                                    <a href="#" title="@SubMenu.MenuItemName"><i class="fa @SubMenu.Icon"></i> <span class="menu-item-parent">@SubMenu.MenuItemName</span></a>
+                                    <ul>
+                                        @foreach (var SubMenu2 in Model.Where(a => a.ParentId == SubMenu.MenuItemId).OrderBy(b => b.Position))
+                                        {
+                                            @if (SubMenu2.MenuType == true)
+                                            {
+                                                <li>
+                                                    <a href="@Url.Action(SubMenu2.Action, SubMenu2.Controller)"><i class="fa @SubMenu2.Icon"></i> <span class="menu-item-parent">@SubMenu2.MenuItemName</span></a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                    <a href="@SubMenu2.Url" ><i class="fa @SubMenu2.Icon"></i> <span class="menu-item-parent">@SubMenu2.MenuItemName</span></a>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </li>
+            }
+        }
+    </ul>
+</nav>

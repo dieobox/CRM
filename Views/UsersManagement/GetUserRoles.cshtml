@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DEPIntranet.ViewModels.UsersManagement.UserRolesViewModel>
+
+
+<div id="showuserRole">
+    <section id="widget-grid" class="">
+        <div class="row">
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-bottom-5">
+                <a class="btn btn-success" id="addUserRole"><i class="fa fa-plus"></i> เพิ่มสิทธิ์การเข้าถึง</a>
+            </article>
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-bottom-5">
+                <div id="showRoles" style="display:none;">
+                    <input type="hidden" value="UserId" id="UserId">
+                    <label><strong>เพิ่มเข้าประเภท :</strong></label> @Html.DropDownList("RoleId", (IEnumerable<SelectListItem>)ViewBag.Roles, new { @class = "form-group", style = "width:30%" })
+                    <button class="btn btn-success" id="AddUserRole"><i class="fa fa-plus"></i> เพิ่ม</button>    
+                </div>
+            </article>
+        </div>
+    </section>
+    <section id="widget-grid" class="">
+        <div class="jarviswidget" id="wid-id-4" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
+            <header>
+                <h2><i class="fa fa-lock"></i> สิทธิ์การเข้าถึง</h2>
+            </header>
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <input class="form-control" type="text">
+                </div>
+                <div class="widget-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th width="90%">ชื่อประเภทสิทธิ์ที่กำหนดไว้</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                if (Model.Count() > 0)
+                                {
+                                    foreach (var Role in Model)
+                                    {
+                                        <tr>
+                                            <td><i class="fa fa-lock"></i> @Role.RoleName</td>
+                                            <td><button class="btn btn-danger btn-xs  delete" value="@Role.UserId" data-RoleId="@Role.RoleId" style="font-size:10px;"><i class="fa fa-eraser"></i> ลบ</button></td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="2">ไม่มีข้อมูล</td>
+                                    </tr>
+                                }
+
+                            }
+                        </tbody>
+                    </table>
+                   
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

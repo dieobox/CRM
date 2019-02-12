@@ -1,0 +1,140 @@
+﻿@model CRM.Models.MenuItems
+<div id="content">
+    <section id="widget-grid" class="">
+        <div class="jarviswidget" id="wid-id-4" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
+            <header>
+                <h2><i class="fa fa-plus"></i> เพิ่มเมนูย่อย</h2>
+            </header>
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <input class="form-control" type="text">
+                </div>
+                <div class="widget-body">
+
+                    @* Form *@
+                    <form id="FormAddMenuItem" class="form-horizontal"
+                          asp-antiforgery="true"
+                          data-bv-message="This value is not valid"
+                          data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+                          data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+                          data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+                        <fieldset>
+                            <legend style="color:red;">กรุณากรอกข้อมูลให้ครบถ้วน</legend>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">ชื่อเมนู <span style="color:red;">*</span></label>
+                                <div class="col-lg-9">
+                                    <input type="text" class="form-control" asp-for="MenuItemName"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอกชื่อเมนู"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">ประเภทเมนู <span style="color:red;">*</span></label>
+                                <div class="col-lg-5">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" class="radiobox style-0" asp-for="MenuType" value="true">
+                                            <span>แบบธรรมดา</span>
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" class="radiobox style-0" asp-for="MenuType" value="false">
+                                            <span>แบบ Url</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div id="ShowAll" style="display:none;">
+                            <div id="AddController" style="display:none;">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Controller <span style="color:red;">*</span></label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" asp-for="Controller" maxlength="50"
+                                                   data-bv-notempty="true"
+                                                   data-bv-notempty-message="กรุณากรอก Controller"
+                                                   data-bv-regexp="true"
+                                                   data-bv-regexp-regexp="^[a-zA-Z]+$"
+                                                   data-bv-regexp-message="Controller สามารถกรอกได้เฉพาะตัวอักษรภาษาอังกฤษเท่านั้น"
+                                                   data-bv-stringlength="true"
+                                                   data-bv-stringlength-max="50"
+                                                   data-bv-stringlength-message="Controller ไม่เกิน50ตัวอักษร" />
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Action <span style="color:red;">*</span></label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" asp-for="Action"
+                                                   data-bv-notempty="true"
+                                                   data-bv-notempty-message="กรุณากรอก Action"
+                                                   data-bv-stringlength="true"
+                                                   data-bv-stringlength-max="50"
+                                                   data-bv-stringlength-message="Action ไม่เกิน50ตัวอักษร" />
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <fieldset id="AddUrl" style="display:none;">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Url <span style="color:red;">*</span></label>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="form-control" asp-for="Url"
+                                               data-bv-notempty="true"
+                                               data-bv-notempty-message="กรุณากรอก Url"/>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                @*<div class="form-group">
+                                    <label class="col-lg-3 control-label">ไอคอนเมนู</label>
+                                    <div class="col-lg-5">
+                                        <input type="text" asp-for="Icon" class="form-control icp icp-auto"
+                                               data-bv-notempty="true"
+                                               data-bv-notempty-message="กรุณาเลือกไอคอน" />
+                                    </div>
+                                </div>*@
+                                <input type="hidden" asp-for="Icon" value="fa-caret-right" />
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">สถานะ <span style="color:red;">*</span></label>
+                                    <div class="col-lg-5">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" class="radiobox style-0" asp-for="Enable" value="true" checked="checked">
+                                                <span>เปิดใช้งาน</span>
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" class="radiobox style-0" asp-for="Enable" value="false">
+                                                <span>ปิดใช้งาน</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <input type="hidden" asp-for="ParentId" value="0" />
+                        <input type="hidden" asp-for="MenuId" value="@ViewBag.MenuId" />
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success" type="submit" id="submit">บันทึก</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using CRM.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{var CurrentUser = await UserManager.FindByIdAsync(UserManager.GetUserId(User)); }
+
+<div class="login-info">
+    <span>
+        <a href="/UsersManagement/Profile?UserId=@CurrentUser.Id" id="show-shortcut">
+            <img src="~/img/Logo-Organozation/LOGO3.gif">
+            <span>@CurrentUser.FirstName @CurrentUser.LastName</span>
+        </a>
+    </span>
+</div>

@@ -1,0 +1,79 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "สิทธิ์การเข้าถึง";
+
+}
+
+<div id="content">
+    <section id="widget-grid" class="">
+        <div class="row">
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-bottom-5">
+                <a class="btn btn-success" data-toggle="modal" id="addRole" data-target="#ButtonAddRole">
+                    <i class="fa fa-plus"></i> เพิ่มสิทธิ์
+                </a>
+            </article>
+        </div>
+    </section>
+    <section id="widget-grid" class="">
+        <div class="row">
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>@ViewData["Title"]</h2>
+                    </header>
+                    <div>
+                        <div class="jarviswidget-editbox"></div>
+                        <div class="widget-body no-padding">
+
+                            <!--- Roles Table --->
+                            
+                            <div id="showRole"></div>
+
+                            <!--- End Roles Table --->
+
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>
+
+
+
+
+@* lightbox *@
+@* Create *@
+<div class="modal fade" id="ButtonAddRole" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="MomdalFormAddRole"></div>
+    </div>
+</div>
+@* end Create *@
+
+@* Update *@
+<div class="modal fade" id="ButtonEditRole" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="MomdalFormEditRole"></div>
+    </div>
+</div>
+@* end Update *@
+
+
+
+
+
+
+@section Scripts{
+    <!-- PAGE RELATED PLUGIN(S) -->
+    <script src="~/js/plugin/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/js/plugin/datatables/dataTables.colVis.min.js"></script>
+    <script src="~/js/plugin/datatables/dataTables.tableTools.min.js"></script>
+    <script src="~/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="~/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+    <!-- bootstrapValidator Form -->
+    <script src="~/js/plugin/bootstrapvalidator/bootstrapValidator.min.js"></script>
+    <!-- Custom Js -->
+    <script src="~/js/customJS/users/Role.js"></script>
+}

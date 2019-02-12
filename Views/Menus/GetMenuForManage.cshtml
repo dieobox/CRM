@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CRM.Models.Menus>
+
+
+@* Table *@
+<div id="ShowMenus">
+    <table id="td_menus" class="table table-striped table-bordered table-hover" width="100%">
+        <thead>
+            <tr>
+                <th class="text-align-center">ลำดับ</th>
+                <th>ชื่อเมนูหลัก</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int Rows = 1;
+                foreach (var list in Model)
+                {
+                    <tr>
+                        <td class="text-align-center">@Rows.</td>
+                        <td>@list.MenuName</td>
+                        <td class="text-align-center">
+                            <button class="btn btn-info btn-xs manage" value="@list.MenuId" style="font-size:10px;"><i class="fa fa-gear"></i> จัดการสิทธิ์การใช้งาน</button>
+                        </td>
+                    </tr>
+                    Rows++;
+                }
+            }
+            
+        </tbody>
+    </table>
+</div>
+
+
+@* End Table *@
+

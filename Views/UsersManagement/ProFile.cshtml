@@ -1,0 +1,257 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "หน้าของฉัน";
+
+}
+
+@model DEPIntranet.ViewModels.UsersManagement.AddUserViewModel
+@using Microsoft.AspNetCore.Identity
+@using DEPIntranet.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{var CurrentUser = await UserManager.FindByIdAsync(UserManager.GetUserId(User)); }
+
+
+<div class="col-sm-12">
+    <div class="well well-sm">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <div class="well well-light well-sm no-margin no-padding">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="myCarousel" class="carousel fade profile-carousel">
+                                <div class="air air-bottom-right padding-10"></div>
+                                <div class="air air-top-left padding-10"></div>
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                    <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                                    <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <!-- Slide 1 -->
+                                    <div class="item active"> <img src="/img/demo/s1.jpg" alt="demo user"></div>
+                                    <!-- Slide 2 -->
+                                    <div class="item"> <img src="/img/demo/s2.jpg" alt="demo user"></div>
+                                    <!-- Slide 3 -->
+                                    <div class="item"> <img src="/img/demo/m3.jpg" alt="demo user"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-3 profile-pic">
+                                    @{
+                                        if (CurrentUser.PictureFile == "")
+                                        {
+                                            <img src="~/img/avatars/male.png" alt="@User.Identity.Name.ToLower()" class="online" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/uploads/users/@CurrentUser.PictureFile" alt="demo user">
+                                        }
+                                    }
+                                </div>
+                                <div class="col-sm-6">
+                                    <h1>
+                                        @CurrentUser.FirstName<span class="semi-bold"> &nbsp;@CurrentUser.LastName</span>
+                                        <span style="color:green;"><i class="fa fa-circle"></i></span>
+                                        <br>
+                                        <small> </small>
+                                    </h1>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <p class="text-muted">
+                                                <i class="fa fa-phone"></i> <span class="txt-color-darken">@CurrentUser.PhoneNumber</span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p class="text-muted">
+                                                <i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:@CurrentUser.Email">@CurrentUser.Email</a>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <hr>
+                            <div class="padding-10">
+                                <ul class="nav nav-tabs tabs-pull-right">
+                                    <li class="active">
+                                        <a href="#a1" data-toggle="tab">แก้ไขข้อมูลของฉัน</a>
+                                    </li>
+                                    <li class="pull-left">
+                                        <span class="margin-top-10 display-inline"><i class="fa fa-rss text-success"></i> ข้อมูลของฉัน</span>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content padding-top-10">
+                                    <div class="tab-pane fade in active" id="a1">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                @* Form *@
+                                                <form id="FormEditUser" class="form-horizontal"
+                                                      enctype="multipart/form-data"
+                                                      asp-antiforgery="true"
+                                                      data-bv-message="This value is not valid"
+                                                      data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+                                                      data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+                                                      data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+                                                    <fieldset>
+                                                        <legend style="color:red;">กรุณากรอกข้อมูลให้ครบถ้วน</legend>
+                                                        <div class="form-group">
+                                                            <label class="col-lg-3 control-label">ชื่อ-นามสกุล</label>
+                                                            <div class="col-lg-4">
+                                                                <input type="text" class="form-control" asp-for="FirstName" placeholder="First name"
+                                                                       data-bv-notempty="true"
+                                                                       data-bv-notempty-message="กรุณากรอกชื่อ" />
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <input type="text" class="form-control" asp-for="LastName" placeholder="Last name"
+                                                                       data-bv-notempty="true"
+                                                                       data-bv-notempty-message="กรุณากรอกนามสกุล" />
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <label class="col-lg-3 control-label">รูปประจำตัว</label>
+                                                            <div class="col-lg-6">
+                                                                <input type="file" class="form-control" asp-for="PictureFile" accept="image/*">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-lg-3 control-label">เรียกดูรูปประจำตัว</label>
+                                                            <div class="col-lg-6">
+                                                                <input type="button" class="btn btn-warning margin-bottom-5" id="ViewImage" value="เรียกดู"><br />
+                                                                <img src="~/uploads/users/@Model.PictureFile" style="display:none;border-radius:4px;" id="ShowPicture">
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <label class="col-lg-3 control-label">ชื่อใช้งานระบบ</label>
+                                                            <div class="col-lg-6">
+                                                                <input type="text" class="form-control" asp-for="UserName"
+                                                                       placeholder="Username"
+                                                                       data-bv-message="The username is not valid"
+                                                                       data-bv-notempty="true"
+                                                                       data-bv-notempty-message="กรุณากรอกนามชื่อใช้งานระบบ"
+                                                                       data-bv-regexp="true"
+                                                                       data-bv-regexp-regexp="^[a-zA-Z0-9_\.]+$"
+                                                                       data-bv-regexp-message="ชื่อใช้งานสามารถกรอกได้เฉพาะตัวอักษรเท่านั้น"
+                                                                       data-bv-stringlength="true"
+                                                                       data-bv-stringlength-min="6"
+                                                                       data-bv-stringlength-max="30"
+                                                                       data-bv-stringlength-message="ชื่อใช้งานอต้อง 6 ถึง 12 เท่านั้น" />
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <label class="col-lg-3 control-label">รหัสผ่าน</label>
+                                                            <div class="col-lg-6">
+                                                                <input type="password" class="form-control" asp-for="Password"
+                                                                       data-bv-identical="true"
+                                                                       data-bv-identical-field="confirmPassword"
+                                                                       data-bv-identical-message="รหัสผ่านและการยืนยันจะไม่ตรงกัน"
+                                                                       data-bv-stringlength="true"
+                                                                       data-bv-stringlength-min="6"
+                                                                       data-bv-stringlength-max="30"
+                                                                       data-bv-stringlength-message="รหัสผ่านอย่างน้อย 6 ถึง 12" />
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <label class="col-lg-3 control-label">ยืนยันรหัสผ่าน</label>
+                                                            <div class="col-lg-6">
+                                                                <input type="password" class="form-control" asp-for="ConfirmPassword"
+                                                                       data-bv-identical="true"
+                                                                       data-bv-identical-field="password"
+                                                                       data-bv-identical-message="รหัสผ่านและการยืนยันจะไม่ตรงกัน"
+                                                                       data-bv-stringlength="true"
+                                                                       data-bv-stringlength-min="6"
+                                                                       data-bv-stringlength-max="30"
+                                                                       data-bv-stringlength-message="ยืนยันรหัสผ่านอย่างน้อย 6 ถึง 12" />
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <label class="col-lg-3 control-label">อีเมล์</label>
+                                                            <div class="col-lg-6">
+                                                                <input class="form-control" type="email" asp-for="Email"
+                                                                       placeholder="example@domain.com"
+                                                                       data-bv-notempty="true"
+                                                                       data-bv-notempty-message="กรุณากรอกอีเมล์"
+                                                                       data-bv-emailaddress="true"
+                                                                       data-bv-emailaddress-message="อีเมล์ไม่ถูดต้อง" />
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <label class="col-lg-3 control-label">หมายเลขโทรศัพท์(มือถือ)</label>
+                                                            <div class="col-lg-6">
+                                                                <input class="form-control" type="text" asp-for="PhoneNumber"
+                                                                       placeholder="09000000000"
+                                                                       data-bv-notempty="true"
+                                                                       data-bv-notempty-message="กรุณากรอกหมายเลขโทรศัพท์(มือถือ)"
+                                                                       data-bv-regexp="true"
+                                                                       data-bv-regexp-regexp="^[_A-z0-9]{1,}$"
+                                                                       data-bv-regexp-message="หมายเลขโทรศัพท์(มือถือ) สามารถกรอกได้เฉพาะเลขเท่านั้น"
+                                                                       data-bv-stringlength="true"
+                                                                       data-bv-stringlength-min="9"
+                                                                       data-bv-stringlength-max="10"
+                                                                       data-bv-stringlength-message="หมายเลขโทรศัพท์อย่างน้อย 9" />
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    @* Hidden Tag *@
+                                                    <input type="hidden" asp-for="UserId">
+                                                    <input type="hidden" name="OldPictureFile" value="@Model.PictureFile">
+                                                    <input type="hidden" name="OldPassword" value="@Model.Password">
+                                                    <input type="hidden" asp-for="TimeAttendanceUserId">
+                                                    <input type="hidden" asp-for="Type">
+                                                    <input type="hidden" asp-for="PersonalCode">
+                                                    <input type="hidden" asp-for="PersoanlId">
+                                                    <input type="hidden" asp-for="OrgCode">
+
+                                                    <input type="hidden" asp-for="BirthDate">
+                                                    <input type="hidden" asp-for="StartDate">
+                                                    <input type="hidden" asp-for="RetireDate">
+                                                    <div class="form-actions">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <button class="btn btn-success" type="submit" id="submit">บันทึก</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+@section Scripts{
+    <!-- bootstrapValidator Form -->
+    <script src="~/js/plugin/bootstrapvalidator/bootstrapValidator.min.js"></script>
+    <script src="~/js/customJS/users/ProFile.js"></script>
+    }

@@ -1,0 +1,115 @@
+﻿@model IEnumerable<CRM.Models.MenuItems>
+<div id="ShowMenuItem">
+    <div class="col-sm-12 col-lg-12 col-xs-12">
+        <h6>@ViewBag.MenuName </h6>
+        <div class="dd margin-bottom-10" style="max-width:1700px;" id="nestable3">
+            @if (Model.Count() > 0)
+            {
+                <ol class="dd-list">
+                    @{
+                        foreach (var MainMenu in Model.Where(w => w.ParentId == 0).OrderBy(r => r.Position))
+                        {
+                            <li class="dd-item dd3-item" data-id="@MainMenu.MenuItemId">
+                                <div class="dd-handle dd3-handle">Drag</div>
+                                <div class="dd3-content">
+                                    @MainMenu.MenuItemName 
+                                    @if (MainMenu.Enable == true)
+                                    {
+                                        <i class="fa txt-color-green fa-check-circle"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa txt-color-red fa-times-circle"></i>
+                                    }
+                                    <div class="pull-right">
+                                        <div class="checkbox no-margin">
+                                            <label>
+                                                <button class="btn btn-warning btn-xs edit" value="@MainMenu.MenuItemId" data-toggle="modal" id="updateStructure" data-target="#ModalFormUpdateShow" style="font-size:9px;">
+                                                    <i class="fa fa-pencil"></i> แก้ไข
+                                                </button>
+                                                <button class="btn btn-danger btn-xs  delete" value="@MainMenu.MenuItemId" style="font-size:9px;">
+                                                    <i class="fa fa-eraser"></i> ลบ
+                                                </button>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ol class="dd-list">
+                                    @foreach (var SubMenu in Model.Where(d => d.ParentId == MainMenu.MenuItemId).OrderBy(r => r.Position))
+                                    {
+                                        <li class="dd-item dd3-item" data-id="@SubMenu.MenuItemId">
+                                            <div class="dd-handle dd3-handle"> Drag</div>
+                                            <div class="dd3-content">
+                                                @SubMenu.MenuItemName
+                                                @if (SubMenu.Enable == true)
+                                                {
+                                                    <i class="fa txt-color-green fa-check-circle"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fa txt-color-red fa-times-circle"></i>
+                                                }
+                                                <div class="pull-right">
+                                                    <div class="checkbox no-margin">
+                                                        <label>
+                                                            <button class="btn btn-warning btn-xs edit" value="@SubMenu.MenuItemId" data-toggle="modal" id="updateStructure" data-target="#ModalFormUpdateShow" style="font-size:9px;">
+                                                                <i class="fa fa-pencil"></i> แก้ไข
+                                                            </button>
+                                                            <button class="btn btn-danger btn-xs  delete" value="@SubMenu.MenuItemId" style="font-size:9px;">
+                                                                <i class="fa fa-eraser"></i> ลบ
+                                                            </button>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ol class="dd-list">
+                                                @foreach (var SubMenu2 in Model.Where(d => d.ParentId == SubMenu.MenuItemId).OrderBy(r => r.Position))
+                                                {
+                                                    <li class="dd-item dd3-item" data-id="@SubMenu2.MenuItemId">
+                                                        <div class="dd-handle dd3-handle"> Drag</div>
+                                                        <div class="dd3-content">
+                                                            @SubMenu2.MenuItemName
+                                                            @if (SubMenu2.Enable == true)
+                                                            {
+                                                                <i class="fa txt-color-green fa-check-circle"></i>
+                                                            }
+                                                            else
+                                                            {
+                                                                <i class="fa txt-color-red fa-times-circle"></i>
+                                                            }
+                                                            <div class="pull-right">
+                                                                <div class="checkbox no-margin">
+                                                                    <label>
+                                                                        <button class="btn btn-warning btn-xs edit" value="@SubMenu2.MenuItemId" data-toggle="modal" id="updateStructure" data-target="#ModalFormUpdateShow" style="font-size:9px;">
+                                                                            <i class="fa fa-pencil"></i> แก้ไข
+                                                                        </button>
+                                                                        <button class="btn btn-danger btn-xs  delete" value="@SubMenu2.MenuItemId" style="font-size:9px;">
+                                                                            <i class="fa fa-eraser"></i> ลบ
+                                                                        </button>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                }
+                                            </ol>
+                                        </li>
+                                    }
+                                </ol>
+                            </li>
+
+                        }
+                    }
+                </ol>
+                        }
+                        else
+                        {
+                            <div class="alert alert-info fade in">
+                                <strong>ไม่มีข้อมูล</strong>
+                            </div>
+
+                        }
+        </div>
+    </div>
+
+</div>

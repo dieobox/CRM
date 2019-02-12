@@ -1,0 +1,999 @@
+﻿@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en" class="font-primary">
+<head>
+    <!-- Title -->
+    <title>@ViewData["title"]</title>
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Google Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,500,600,700%7Csubset=cyrillic,latin" rel="stylesheet" type="text/css">
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="/assets/vendor/bootstrap/bootstrap.min.css">
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="/assets/vendor/icon-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/vendor/icon-line/css/simple-line-icons.css">
+    <link rel="stylesheet" href="/assets/vendor/icon-line-pro/style.css">
+    <link rel="stylesheet" href="/assets/vendor/icon-hs/style.css">
+    <link rel="stylesheet" href="/assets/vendor/animate.css">
+    <link rel="stylesheet" href="/assets/vendor/fancybox/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/vendor/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="/assets/vendor/dzsparallaxer/dzsparallaxer.css">
+    <link rel="stylesheet" href="/assets/vendor/dzsparallaxer/dzsscroller/scroller.css">
+    <link rel="stylesheet" href="/assets/vendor/dzsparallaxer/advancedscroller/plugin.css">
+    <link rel="stylesheet" href="/assets/vendor/typedjs/typed.css">
+    <link rel="stylesheet" href="/assets/vendor/hs-megamenu/src/hs.megamenu.css">
+    <link rel="stylesheet" href="/assets/vendor/hamburgers/hamburgers.min.css">
+    <!-- CSS Unify -->
+    <link rel="stylesheet" href="/assets/css/unify.css">
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="/assets/css/custom.css">
+    <!-- CSS set font thai -->
+    <link rel="stylesheet" href="~/css/setFontTH.css">
+</head>
+
+<body>
+    <main>
+        <!-- Header -->
+        <header id="js-header" class="u-header u-header--static u-header--toggle"
+                data-header-fix-moment="500"
+                data-header-fix-effect="slide">
+            <div class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-10"
+                 data-header-fix-moment-exclude="g-bg-white g-py-10"
+                 data-header-fix-moment-classes="g-bg-white-opacity-0_9 u-shadow-v18 g-py-3">
+                <nav class="js-mega-menu navbar navbar-toggleable-md">
+                    <div class="container">
+                        <!-- Responsive Toggle Button -->
+                        <button class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pa-0 g-pos-abs g-right-0" type="button"
+                                aria-label="Toggle navigation"
+                                aria-expanded="false"
+                                aria-controls="navBar"
+                                data-toggle="collapse"
+                                data-target="#navBar">
+                            <span class="hamburger hamburger--slider">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </span>
+                        </button>
+                        <!-- End Responsive Toggle Button -->
+                        <!-- Logo -->
+                        <a href="../../unify-main/home/home-page-1.html" class="navbar-brand">
+                            <img src="/assets/img/logo/logo-1.png" alt="Image Description">
+                        </a>
+                        <!-- End Logo -->
+                        <!-- Navigation -->
+                        <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg g-mr-40--lg" id="navBar">
+                            <ul class="navbar-nav text-uppercase g-font-weight-600 ml-auto">
+                                <li class="nav-item g-mx-10--lg g-mx-15--xl">
+                                    <a href="../../index.html" class="nav-link g-py-7 g-px-0">หน้าหลัก</a>
+                                </li>
+                                <li class="nav-item hs-has-sub-menu g-mx-10--lg g-mx-15--xl">
+                                    <a id="nav-link--home" class="nav-link g-py-7 g-px-0" href="#"
+                                       aria-haspopup="true"
+                                       aria-expanded="false"
+                                       aria-controls="nav-submenu--home">CIO</a>
+                                    <!-- Submenu -->
+                                    <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-mt-20 g-mt-15--lg--scrolling" id="nav-submenu--home"
+                                        aria-labelledby="nav-link--home">
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/home/home-page-1.html">Home 1</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/home/home-page-2.html">Home 2</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/home/home-page-3.html">Home 3</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/home/home-page-4.html">Home 4</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/home/home-page-5.html">Home 5</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/home/home-page-6.html">Home 6</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/home/home-page-7.html">Home 7</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/home/home-page-8.html">Home 8</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/home/home-page-9.html">Home 9</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/home/home-page-10.html">Home 10</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/home/home-page-11.html">Home 11</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/home/home-page-12.html">Home 12</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/home/home-page-13.html">Home 13</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/home/home-page-14.html">Home 14</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/home/home-page-15.html">Home 15</a></li>
+                                    </ul>
+                                    <!-- End Submenu -->
+                                </li>
+
+                                <li class="nav-item hs-has-sub-menu g-mx-10--lg g-mx-15--xl">
+                                    <a id="nav-link--pages" class="nav-link g-py-7 g-px-0" href="#"
+                                       aria-haspopup="true"
+                                       aria-expanded="false"
+                                       aria-controls="nav-submenu--pages">ประชาสัมพันธ์</a>
+
+                                    <!-- Submenu -->
+                                    <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-mt-20 g-mt-15--lg--scrolling" id="nav-submenu--pages"
+                                        aria-labelledby="nav-link--pages">
+                                        <li class="dropdown-item hs-has-sub-menu">
+                                            <a id="nav-link--pages--about" class="nav-link" href="#"
+                                               aria-haspopup="true"
+                                               aria-expanded="false"
+                                               aria-controls="nav-submenu--pages--about">About</a>
+
+                                            <!-- Submenu (level 2) -->
+                                            <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--pages--about"
+                                                aria-labelledby="nav-link--pages--about">
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-about-1.html">About 1</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-about-2.html">About 2</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-about-3.html">About 3</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-about-4.html">About 4</a></li>
+                                                <li class="dropdown-divider"></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-about-me-1.html">About me 1</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-about-me-2.html">About me 2</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-about-me-3.html">About me 3</a></li>
+                                            </ul>
+                                            <!-- End Submenu (level 2) -->
+                                        </li>
+                                        <li class="dropdown-item hs-has-sub-menu">
+                                            <a id="nav-link--pages--services" class="nav-link" href="#"
+                                               aria-haspopup="true"
+                                               aria-expanded="false"
+                                               aria-controls="nav-submenu--pages--services">Services</a>
+
+                                            <!-- Submenu (level 2) -->
+                                            <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--pages--services"
+                                                aria-labelledby="nav-link--pages--services">
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-services-1.html">Services 1</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-services-2.html">Services 2</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-services-3.html">Services 3</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-services-4.html">Services 4</a></li>
+                                            </ul>
+                                            <!-- End Submenu (level 2) -->
+                                        </li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-clients-1.html">Clients</a></li>
+                                        <li class="dropdown-item hs-has-sub-menu">
+                                            <a id="nav-link--pages--profile" class="nav-link" href="#"
+                                               aria-haspopup="true"
+                                               aria-expanded="false"
+                                               aria-controls="nav-submenu--pages--profile">Profiles</a>
+
+                                            <!-- Submenu (level 2) -->
+                                            <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--pages--profile"
+                                                aria-labelledby="nav-link--pages--profile">
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-profile-main-1.html">Main</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-profile-profile-1.html">User Profile</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-profile-projects-1.html">Profile Projects</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-profile-comments-1.html">Profile Comments</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-profile-history-1.html">Profile History</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-profile-reviews-1.html">Profile Reviews</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-profile-settings-1.html">Profile Settings</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-profile-users-1.html">Profile Users Contacts</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-profile-users-1-full-width.html">Profile Users Contacts (full width)</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-profile-users-2.html">Profile Users Contacts 2</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-profile-users-2-full-width.html">Profile Users Contacts (full width) 2</a></li>
+                                            </ul>
+                                            <!-- End Submenu (level 2) -->
+                                        </li>
+                                        <li class="dropdown-item hs-has-sub-menu">
+                                            <a id="nav-link--pages--contacts" class="nav-link" href="#"
+                                               aria-haspopup="true"
+                                               aria-expanded="false"
+                                               aria-controls="nav-submenu--pages--contacts">Сontacts</a>
+
+                                            <!-- Submenu (level 2) -->
+                                            <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--pages--contacts"
+                                                aria-labelledby="nav-link--pages--contacts">
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-contacts-1.html">Сontacts 1</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-contacts-2.html">Сontacts 2</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-contacts-3.html">Сontacts 3</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-contacts-4.html">Сontacts 4</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-contacts-5.html">Сontacts 5</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-contacts-6.html">Сontacts 6</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-contacts-7.html">Сontacts 7</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-contacts-8.html">Сontacts 8</a></li>
+                                            </ul>
+                                            <!-- End Submenu (level 2) -->
+                                        </li>
+                                        <li class="dropdown-item hs-has-sub-menu">
+                                            <a id="nav-link--pages--jobs" class="nav-link" href="#"
+                                               aria-haspopup="true"
+                                               aria-expanded="false"
+                                               aria-controls="nav-submenu--pages--jobs">Jobs</a>
+
+                                            <!-- Submenu (level 2) -->
+                                            <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--pages--jobs"
+                                                aria-labelledby="nav-link--pages--jobs">
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-jobs-1.html">Jobs</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-jobs-description-right-sidebar-1.html">Jobs Description</a></li>
+                                            </ul>
+                                            <!-- End Submenu (level 2) -->
+                                        </li>
+                                        <li class="dropdown-item hs-has-sub-menu">
+                                            <a id="nav-link--pages--search-result" class="nav-link" href="#"
+                                               aria-haspopup="true"
+                                               aria-expanded="false"
+                                               aria-controls="nav-submenu--pages--search-result">Search results</a>
+
+                                            <!-- Submenu (level 2) -->
+                                            <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--pages--search-result"
+                                                aria-labelledby="nav-link--pages--search-result">
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-search-results-grid-veiw-1.html">Grid View</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-search-results-grid-veiw-left-sidebar-1.html">Grid View with Sidebar</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-search-results-list-veiw-1.html">List View 1</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-search-results-list-veiw-2.html">List View 2</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-search-results-list-veiw-left-sidebar-1.html">List View with Sidebar</a></li>
+                                            </ul>
+                                            <!-- End Submenu (level 2) -->
+                                        </li>
+                                        <li class="dropdown-item hs-has-sub-menu">
+                                            <a id="nav-link--pages--faq" class="nav-link" href="#"
+                                               aria-haspopup="true"
+                                               aria-expanded="false"
+                                               aria-controls="nav-submenu--pages--faq">FAQ</a>
+
+                                            <!-- Submenu (level 2) -->
+                                            <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--pages--faq"
+                                                aria-labelledby="nav-link--pages--faq">
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-faq-1.html">FAQ 1</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-faq-2.html">FAQ 2</a></li>
+                                            </ul>
+                                            <!-- End Submenu (level 2) -->
+                                        </li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-invoice-1.html">Invoice</a></li>
+                                        <li class="dropdown-item hs-has-sub-menu">
+                                            <a id="nav-link--pages--portfolio" class="nav-link" href="#"
+                                               aria-haspopup="true"
+                                               aria-expanded="false"
+                                               aria-controls="nav-submenu--pages--portfolio">Portfolios</a>
+
+                                            <!-- Submenu (level 2) -->
+                                            <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--pages--portfolio"
+                                                aria-labelledby="nav-link--pages--portfolio">
+                                                <li class="dropdown-item hs-has-sub-menu">
+                                                    <a id="nav-link--pages--portfolio-case-study" class="nav-link" href="#"
+                                                       aria-haspopup="true"
+                                                       aria-expanded="false"
+                                                       aria-controls="nav-submenu--pages--portfolio-case-study">Case Studies</a>
+
+                                                    <!-- Submenu (level 2) -->
+                                                    <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--pages--portfolio-case-study"
+                                                        aria-labelledby="nav-link--pages--portfolio-case-study">
+                                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-portfolio-case-study-1.html">Case Studies 1</a></li>
+                                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-portfolio-case-study-2.html">Case Studies 2</a></li>
+                                                    </ul>
+                                                    <!-- End Submenu (level 2) -->
+                                                </li>
+                                                <li class="dropdown-item hs-has-sub-menu">
+                                                    <a id="nav-link--pages--portfolio-single-item" class="nav-link" href="#"
+                                                       aria-haspopup="true"
+                                                       aria-expanded="false"
+                                                       aria-controls="nav-submenu--pages--portfolio-single-item">Single items</a>
+
+                                                    <!-- Submenu (level 2) -->
+                                                    <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--pages--portfolio-single-item"
+                                                        aria-labelledby="nav-link--pages--portfolio-single-item">
+                                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-portfolio-single-item-1.html">Single item 1</a></li>
+                                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-portfolio-single-item-2.html">Single item 2</a></li>
+                                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-portfolio-single-item-3.html">Single item 3</a></li>
+                                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-portfolio-single-item-4.html">Single item 4</a></li>
+                                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-portfolio-single-item-5.html">Single item 5</a></li>
+                                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-portfolio-single-item-6.html">Single item 6</a></li>
+                                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-portfolio-single-item-7.html">Single item 7</a></li>
+                                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-portfolio-single-item-8.html">Single item 8</a></li>
+                                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-portfolio-single-item-9.html">Single item 9</a></li>
+                                                    </ul>
+                                                    <!-- End Submenu (level 2) -->
+                                                </li>
+                                            </ul>
+                                            <!-- End Submenu (level 2) -->
+                                        </li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-pricing-1.html">Pricing</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-terms-1.html">Terms</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-cookies-1.html">Сookies</a></li>
+                                    </ul>
+                                    <!-- End Submenu -->
+                                </li>
+
+                                <li class="nav-item hs-has-sub-menu g-mx-10--lg g-mx-15--xl">
+                                    <a id="nav-link--features" class="nav-link g-py-7 g-px-0" href="#"
+                                       aria-haspopup="true"
+                                       aria-expanded="false"
+                                       aria-controls="nav-submenu--features">สิทธิ/สวัสดิการ/บริการ</a>
+
+                                    <!-- Submenu -->
+                                    <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-mt-20 g-mt-15--lg--scrolling" id="nav-submenu--features"
+                                        aria-labelledby="nav-link--features">
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/shortcodes/headers/index.html">Headers</a></li>
+                                        <li class="dropdown-item"><a class="nav-link" href="../../unify-main/shortcodes/promo/shortcode-blocks-promo.html">Promo blocks</a></li>
+                                        <li class="dropdown-item hs-has-sub-menu">
+                                            <a id="nav-link--features--pop-ups" class="nav-link" href="#"
+                                               aria-haspopup="true"
+                                               aria-expanded="false"
+                                               aria-controls="nav-submenu--features--pop-ups">Pop-ups</a>
+
+                                            <!-- Submenu (level 2) -->
+                                            <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--features--pop-ups"
+                                                aria-labelledby="nav-link--features--pop-ups">
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/shortcodes/shortcode-base-lightbox.html">Lightbox</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/shortcodes/shortcode-base-modals.html">Modals</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/shortcodes/shortcode-blocks-gallery.html">Gallery</a></li>
+                                            </ul>
+                                            <!-- End Submenu (level 2) -->
+                                        </li>
+                                        <li class="dropdown-item hs-has-sub-menu">
+                                            <a id="nav-link--features--maps" class="nav-link" href="#"
+                                               aria-haspopup="true"
+                                               aria-expanded="false"
+                                               aria-controls="nav-submenu--features--maps">Maps</a>
+
+                                            <!-- Submenu (level 2) -->
+                                            <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--features--maps"
+                                                aria-labelledby="nav-link--features--maps">
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/shortcodes/shortcode-base-google-maps.html">Google Maps</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/shortcodes/shortcode-base-maps-with-pins.html">Maps With Pins</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/shortcodes/shortcode-base-vector-maps.html">Vector Maps</a></li>
+                                            </ul>
+                                            <!-- End Submenu (level 2) -->
+                                        </li>
+                                        <li class="dropdown-item hs-has-sub-menu">
+                                            <a id="nav-link--features--footers" class="nav-link" href="#"
+                                               aria-haspopup="true"
+                                               aria-expanded="false"
+                                               aria-controls="nav-submenu--features--footers">Footers</a>
+
+                                            <!-- Submenu (level 2) -->
+                                            <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--features--footers"
+                                                aria-labelledby="nav-link--features--footers">
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/shortcodes/footers/shortcode-blocks-footer-classic.html">Classic Footers</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/shortcodes/footers/shortcode-blocks-footer-contact-forms.html">Contact Forms</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/shortcodes/footers/shortcode-blocks-footer-maps.html">Footers Maps</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../unify-main/shortcodes/footers/shortcode-blocks-footer-modern.html">Modern Footers</a></li>
+                                            </ul>
+                                            <!-- End Submenu (level 2) -->
+                                        </li>
+                                    </ul>
+                                    <!-- End Submenu -->
+                                </li>
+
+                                <li class="hs-has-mega-menu nav-item g-mx-10--lg g-mx-15--xl"
+                                    data-animation-in="fadeIn"
+                                    data-animation-out="fadeOut"
+                                    data-position="right">
+                                    <a id="mega-menu-shortcodes" class="nav-link g-py-7 g-px-0" href="#" aria-haspopup="true" aria-expanded="false">
+                                    กฎ/ระเบียบ/ข้อบังคับ
+                                    <i class="hs-icon hs-icon-arrow-bottom g-font-size-11 g-ml-7"></i></a>
+
+                                    <!-- Mega Menu -->
+                                    <div class="w-100 hs-mega-menu u-shadow-v11 font-weight-normal g-brd-top g-brd-primary g-brd-top-2 g-bg-white g-mt-17 g-mt-7--lg--scrolling" aria-labelledby="mega-menu-shortcodes">
+                                        <ul class="nav justify-content-center u-nav-v5-1 u-nav-primary g-font-weight-600 g-brd-bottom--md g-brd-gray-light-v4"
+                                            data-tabs-mobile-type="slide-up-down"
+                                            data-destroy-res="768"
+                                            data-btn-classes="btn btn-md btn-block u-btn-outline-black">
+                                            <li class="nav-item">
+                                                <a class="nav-link active g-py-10--md g-px-15--md" href="#tab-blocks"
+                                                   role="tab"
+                                                   data-toggle="tab">Blocks</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link g-py-10--md g-px-15--md" href="#tab-bases"
+                                                   role="tab"
+                                                   data-toggle="tab">Bases</a>
+                                            </li>
+                                        </ul>
+
+                                        <div class="tab-content">
+                                            <div class="tab-pane fade in active show" id="tab-blocks"
+                                                 role="tabpanel">
+                                                <div class="row align-items-stretch no-gutters">
+                                                    <div class="col-md-6 col-lg-3">
+                                                        <ul class="list-unstyled g-py-7">
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/headers/index.html" class="nav-link">Headers</a></li>
+
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/promo/shortcode-blocks-promo.html" class="nav-link">Promo</a></li>
+
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/footers/shortcode-blocks-footer-classic.html" class="nav-link">Footer classic</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/footers/shortcode-blocks-footer-contact-forms.html" class="nav-link">Footer contact forms</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/footers/shortcode-blocks-footer-maps.html" class="nav-link">Footer maps</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/footers/shortcode-blocks-footer-modern.html" class="nav-link">Footer modern</a></li>
+
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-banners.html" class="nav-link">Banners</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-clients.html" class="nav-link">Clients</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-comments.html" class="nav-link">Comments</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-countdowns.html" class="nav-link">Countdowns</a></li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="col-md-6 col-lg-3 g-brd-left--lg g-brd-gray-light-v5">
+                                                        <ul class="list-unstyled g-py-7">
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-counters.html" class="nav-link">Counters</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-cta-boxed.html" class="nav-link">CTA (boxed)</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-cta-full-width.html" class="nav-link">CTA (full width)</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-gallery.html" class="nav-link">Gallery</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-hero-info.html" class="nav-link">Hero info</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-hero-blocks.html" class="nav-link">Hero blocks</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-hero-content.html" class="nav-link">Hero content</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-icons.html" class="nav-link">Icons</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-icons-app.html" class="nav-link">Icons app</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-icons-interactive.html" class="nav-link">Icons interactive</a></li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="col-md-6 col-lg-3 g-brd-left--lg g-brd-gray-light-v5">
+                                                        <ul class="list-unstyled g-py-7">
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-info-blocks.html" class="nav-link">Info blocks</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-news.html" class="nav-link">News</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-news-image.html" class="nav-link">News image</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-news-no-images.html" class="nav-link">News no images</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-news-small.html" class="nav-link">News small</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-tables.html" class="nav-link">Tables</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-pricing-plans.html" class="nav-link">Pricing plans</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-pricing-sections.html" class="nav-link">Pricing sections</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-pricing-table.html" class="nav-link">Pricing table</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-products.html" class="nav-link">Products</a></li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="col-md-6 col-lg-3 g-brd-left--lg g-brd-gray-light-v5">
+                                                        <ul class="list-unstyled g-py-7">
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-products-advanced.html" class="nav-link">Products advanced</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-products-list.html" class="nav-link">Products list</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-products-overlay.html" class="nav-link">Products overlay</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-team.html" class="nav-link">Team</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-team-advanced.html" class="nav-link">Team advanced</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-testimonials.html" class="nav-link">Testimonials</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-testimonials-advanced.html" class="nav-link">Testimonials advanced</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-timelines.html" class="nav-link">Timelines</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-blocks-users.html" class="nav-link">Users</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane fade in" id="tab-bases"
+                                                 role="tabpanel">
+                                                <div class="row align-items-stretch no-gutters">
+                                                    <div class="col-md-4">
+                                                        <ul class="list-unstyled g-py-7">
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-accrodions.html" class="nav-link">Accrodions</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-alerts.html" class="nav-link">Alerts</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-badges.html" class="nav-link">Badges</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-blockquotes.html" class="nav-link">Blockquotes</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-box-shadow.html" class="nav-link">Box shadow</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-breadcrumbs.html" class="nav-link">Breadcrumbs</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-buttons.html" class="nav-link">Buttons</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-dividers.html" class="nav-link">Dividers</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-dynamic-process-blocks-1.html" class="nav-link">Dynamic process blocks 1</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-lightbox.html" class="nav-link">Lightbox</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-modals.html" class="nav-link">Modals</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-gallery-grid.html" class="nav-link">Gallery grid</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-gradient-backgrounds.html" class="nav-link">Gradient backgrounds</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-labels.html" class="nav-link">Labels</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-lists-group.html" class="nav-link">Lists group</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-media-audios.html" class="nav-link">Media audios</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-media-images.html" class="nav-link">Media images</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-media-videos.html" class="nav-link">Media videos</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-onscroll-animations.html" class="nav-link">Onscroll animations</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-paginations.html" class="nav-link">Paginations</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-panels.html" class="nav-link">Panels</a></li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="col-md-4 g-brd-left--lg g-brd-gray-light-v5">
+                                                        <ul class="list-unstyled g-py-7">
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-progress-bars.html" class="nav-link">Progress bars</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-static-process-blocks-1.html" class="nav-link">Static process blocks 1</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-tables.html" class="nav-link">Tables</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-taglines.html" class="nav-link">Taglines</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-tags.html" class="nav-link">Tags</a></li>
+
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-headings.html" class="nav-link">Headings</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-typography.html" class="nav-link">Typography</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-dropcaps.html" class="nav-link">Dropcaps</a></li>
+
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-google-maps.html" class="nav-link">Google maps</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-vector-maps.html" class="nav-link">Vector maps</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/shortcode-base-maps-with-pins.html" class="nav-link">Maps with pins</a></li>
+
+                                                            <li class="dropdown-divider"></li>
+
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/forms/shortcode-base-forms-bootstrap.html" class="nav-link">Forms bootstrap</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/forms/shortcode-base-forms-unify.html" class="nav-link">Forms unify</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/forms/shortcode-base-forms-horizontal-unify.html" class="nav-link">Forms horizontal unify</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/forms/shortcode-base-forms-disabled-states-unify.html" class="nav-link">Forms disabled states unify</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/forms/shortcode-base-forms-success-states-unify.html" class="nav-link">Forms success states unify</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/forms/shortcode-base-forms-error-states-unify.html" class="nav-link">Forms error states unify</a></li>
+
+                                                            <li class="dropdown-divider"></li>
+
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/icons/shortcode-base-icons.html" class="nav-link">Icons</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/icons/shortcode-base-icon-hovers.html" class="nav-link">Icon hovers</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/icons/shortcode-base-icon-sizes.html" class="nav-link">Icon sizes</a></li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="col-md-4 g-brd-left--lg g-brd-gray-light-v5">
+                                                        <ul class="list-unstyled g-py-7">
+
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/icons/shortcode-base-social-icons.html" class="nav-link">Social icons</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/icons/shortcode-base-icon-fontawesome.html" class="nav-link">Icon fontawesome</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/icons/shortcode-base-icon-line-icons-pro-1.html" class="nav-link">Icon line icons pro 1</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/icons/shortcode-base-icon-line-icons-pro-2.html" class="nav-link">Icon line icons pro 2</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/icons/shortcode-base-icon-simple-line-icons.html" class="nav-link">Icon simple line icons</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/icons/shortcode-base-icon-et-line-icon.html" class="nav-link">Icon et line icon</a></li>
+
+                                                            <li class="dropdown-divider"></li>
+
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/tabs/shortcode-base-tabs-1-1.html" class="nav-link">Tabs 1-1</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/tabs/shortcode-base-tabs-1-2.html" class="nav-link">Tabs 1-2</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/tabs/shortcode-base-tabs-2-1.html" class="nav-link">Tabs 2-1</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/tabs/shortcode-base-tabs-2-2.html" class="nav-link">Tabs 2-2</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/tabs/shortcode-base-tabs-3-1.html" class="nav-link">Tabs 3-1</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/tabs/shortcode-base-tabs-4-1.html" class="nav-link">Tabs 4-1</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/tabs/shortcode-base-tabs-5-1.html" class="nav-link">Tabs 5-1</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/tabs/shortcode-base-tabs-5-2.html" class="nav-link">Tabs 5-2</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/tabs/shortcode-base-tabs-5-3.html" class="nav-link">Tabs 5-3</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/tabs/shortcode-base-tabs-6-1.html" class="nav-link">Tabs 6-1</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/tabs/shortcode-base-tabs-7-1.html" class="nav-link">Tabs 7-1</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/tabs/shortcode-base-tabs-8-1.html" class="nav-link">Tabs 8-1</a></li>
+                                                            <li class="dropdown-item"><a href="../../unify-main/shortcodes/tabs/shortcode-base-tabs-8-2.html" class="nav-link">Tabs 8-2</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Mega Menu -->
+                                </li>
+
+                                <li class="nav-item hs-has-sub-menu g-mx-10--lg g-mx-15--xl">
+                                    <a id="nav-link-home" class="nav-link g-py-7 g-px-0" href="#"
+                                       aria-haspopup="true"
+                                       aria-expanded="false"
+                                       aria-controls="nav-submenu-home">สถิติ/วิชาการ</a>
+
+                                    <!-- Submenu -->
+                                    <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-mt-20 g-mt-15--lg--scrolling" id="nav-submenu-demos"
+                                        aria-labelledby="nav-link-demos">
+                                        <li class="dropdown-item hs-has-sub-menu">
+                                            <a id="nav-link--demos--one-page" class="nav-link" href="#"
+                                               aria-haspopup="true"
+                                               aria-expanded="false"
+                                               aria-controls="nav-submenu--demos--one-page">One Pages</a>
+
+                                            <!-- Submenu (level 2) -->
+                                            <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--demos--one-page"
+                                                aria-labelledby="nav-link--demos--one-page">
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/accounting/index.html">Accounting</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/agency/index.html">Agency</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/app/index.html">App</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/architecture/index.html">Architecture</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/business/index.html">Business</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/charity/index.html">Charity</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/construction/index.html">Construction</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/courses/index.html">Courses</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/event/index.html">Event</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/gym/index.html">GYM</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/lawyer/index.html">Lawyer</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/music/index.html">Music</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/photography/index.html">Photography</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/real-estate/index.html">Real Estate</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/restaurant/index.html">Restaurant</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/shipping/index.html">Shipping</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/spa/index.html">Spa</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/travel/index.html">Travel</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../one-pages/wedding/index.html">Wedding</a></li>
+                                            </ul>
+                                            <!-- End Submenu (level 2) -->
+                                        </li>
+                                        <li class="dropdown-item hs-has-sub-menu">
+                                            <a id="nav-link--demos--e-commerce" class="nav-link" href="#"
+                                               aria-haspopup="true"
+                                               aria-expanded="false"
+                                               aria-controls="nav-submenu--demos--e-commerce">ระบบงานของ พก.</a>
+
+                                            <!-- Submenu (level 2) -->
+                                            <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--demos--e-commerce"
+                                                aria-labelledby="nav-link--demos--e-commerce">
+                                                <li class="dropdown-item"><a class="nav-link" href="../../e-commerce/index.html">Main Page</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../e-commerce/page-grid-filter-1.html">Grid Filter</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../e-commerce/page-list-filter-1.html">List Filter</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../e-commerce/page-product-1.html">Product</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../e-commerce/page-checkout-1.html">Сheckout</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../e-commerce/page-login-1.html">Login</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../e-commerce/page-signup-1.html">Signup</a></li>
+                                            </ul>
+                                            <!-- End Submenu (level 2) -->
+                                        </li>
+                                        <li class="dropdown-item hs-has-sub-menu">
+                                            <a id="nav-link--demos--blog-magazine" class="nav-link" href="#"
+                                               aria-haspopup="true"
+                                               aria-expanded="false"
+                                               aria-controls="nav-submenu--demos--blog-magazine">Blogs &amp; Magazines</a>
+
+                                            <!-- Submenu (level 2) -->
+                                            <ul class="hs-sub-menu list-unstyled g-brd-top g-brd-primary g-brd-top-2 g-min-width-220 g-py-7 g-my-2" id="nav-submenu--demos--blog-magazine"
+                                                aria-labelledby="nav-link--demos--blog-magazine">
+                                                <li class="dropdown-item"><a class="nav-link" href="../../blog-magazine/classic/bm-classic-home-1.html">Home</a></li>
+                                                <li class="dropdown-item"><a class="nav-link" href="../../blog-magazine/classic/bm-classic-single-1.html">Single</a></li>
+                                            </ul>
+                                            <!-- End Submenu (level 2) -->
+                                        </li>
+                                    </ul>
+                                    <!-- End Submenu -->
+                                </li>
+
+                                <li class="hs-has-mega-menu nav-item g-mx-10--lg g-mx-15--xl"
+                                    data-animation-in="fadeIn"
+                                    data-animation-out="fadeOut"
+                                    data-position="right">
+                                    <a id="mega-menu-others" class="nav-link g-py-7 g-px-0" href="#" aria-haspopup="true" aria-expanded="false">Others <i class="hs-icon hs-icon-arrow-bottom g-font-size-11 g-ml-7"></i></a>
+
+                                    <!-- Mega Menu -->
+                                    <div class="w-100 hs-mega-menu u-shadow-v11 font-weight-normal g-brd-top g-brd-primary g-brd-top-2 g-bg-white g-mt-17 g-mt-7--lg--scrolling" aria-labelledby="mega-menu-others">
+                                        <div class="row align-items-stretch no-gutters">
+                                            <div class="col-md-6 col-lg-4">
+                                                <ul class="list-unstyled g-py-7">
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-background-overlay-left-sidebar.html" class="nav-link">Blog grid background overlay left (sidebar)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-background-overlay-right-sidebar.html" class="nav-link">Blog grid background overlay right (sidebar)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-background-overlay-2.html" class="nav-link">Blog grid background overlay 2</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-background-overlay-3.html" class="nav-link">Blog grid background overlay 3</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-background-overlay-3-fullwidth.html" class="nav-link">Blog grid background overlay 3 (fullwidth)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-background-overlay-4.html" class="nav-link">Blog grid background overlay 4</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-background-overlay-4-fullwidth.html" class="nav-link">Blog grid background overlay 4 (fullwidth)</a></li>
+
+                                                    <li class="dropdown-divider"></li>
+
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-classic-left-sidebar.html" class="nav-link">Blog grid classic left (sidebar)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-classic-right-sidebar.html" class="nav-link">Blog grid classic right (sidebar)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-classic-2.html" class="nav-link">Blog grid classic 2</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-classic-3.html" class="nav-link">Blog grid classic 3</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-classic-3-fullwidth.html" class="nav-link">Blog grid classic 3 (fullwidth)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-classic-4.html" class="nav-link">Blog grid classic 4</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-classic-4-fullwidth.html" class="nav-link">Blog grid classic 4 (fullwidth)</a></li>
+
+                                                    <li class="dropdown-divider"></li>
+
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-modern-1.html" class="nav-link">Blog grid modern 1</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-modern-2.html" class="nav-link">Blog grid modern 2</a></li>
+
+                                                    <li class="dropdown-divider"></li>
+
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-overlap-left-sidebar.html" class="nav-link">Blog grid overlap left (sidebar)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-overlap-right-sidebar.html" class="nav-link">Blog grid overlap right (sidebar)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-overlap-2.html" class="nav-link">Blog grid overlap 2</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-overlap-3.html" class="nav-link">Blog grid overlap 3</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-overlap-3-fullwidth.html" class="nav-link">Blog grid overlap 3 (fullwidth)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-grid-overlap-4-fullwidth.html" class="nav-link">Blog grid overlap 4 (fullwidth)</a></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-md-6 col-lg-4 g-brd-left--lg g-brd-gray-light-v5">
+                                                <ul class="list-unstyled g-py-7">
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-masonry-col-2.html" class="nav-link">Blog masonry col 2</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-masonry-col-3.html" class="nav-link">Blog masonry col 3</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-masonry-col-3-fullwidth.html" class="nav-link">Blog masonry col 3 (fullwidth)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-masonry-col-4.html" class="nav-link">Blog masonry col 4</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-masonry-col-4-fullwidth.html" class="nav-link">Blog masonry col 4 (fullwidth)</a></li>
+
+                                                    <li class="dropdown-divider"></li>
+
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-minimal-1.html" class="nav-link">Blog minimal 1</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-minimal-1-left-sidebar.html" class="nav-link">Blog minimal 1 left (sidebar)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-minimal-1-right-sidebar.html" class="nav-link">Blog minimal 1 right (sidebar)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-minimal-2.html" class="nav-link">Blog minimal 2</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-minimal-2-left-sidebar.html" class="nav-link">Blog minimal 2 left (sidebar)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-minimal-2-right-sidebar.html" class="nav-link">Blog minimal 2 right (sidebar)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-minimal-3.html" class="nav-link">Blog minimal 3</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-minimal-3-left-sidebar.html" class="nav-link">Blog minimal 3 left (sidebar)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-minimal-3-right-sidebar.html" class="nav-link">Blog minimal 3 right (sidebar)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-minimal-4.html" class="nav-link">Blog minimal 4</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-minimal-4-left-sidebar.html" class="nav-link">Blog minimal 4 left (sidebar)</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-minimal-4-right-sidebar.html" class="nav-link">Blog minimal 4 right (sidebar)</a></li>
+
+                                                    <li class="dropdown-divider"></li>
+
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-single-item-1.html" class="nav-link">Blog single item 1</a></li>
+                                                    <li class="dropdown-item"><a href="../../unify-main/blog/blog-single-item-2.html" class="nav-link">Blog single item 2</a></li>
+
+                                                    <li class="dropdown-divider"></li>
+
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-login-and-signup-1.html">Login &amp; Signup</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-login-1.html">login 1</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-login-2.html">Login 2</a></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-md-6 col-lg-4 g-brd-left--lg g-brd-gray-light-v5">
+                                                <ul class="list-unstyled g-py-7">
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-login-3.html">Login 3</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-login-4.html">Login 4</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-login-5.html">Login 5</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-login-6.html">Login 6</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-login-7.html">Login 7</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-login-8.html">Login 8</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-login-9.html">Login 9</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-login-10.html">Login 10</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-login-11.html">Login 11</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-login-12.html">Login 12</a></li>
+
+                                                    <li class="dropdown-divider"></li>
+
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-signup-1.html">Signup 1</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-signup-2.html">Signup 2</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-signup-3.html">Signup 3</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-signup-4.html">Signup 4</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-signup-5.html">Signup 5</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-signup-6.html">Signup 6</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-signup-7.html">Signup 7</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-signup-8.html">Signup 8</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-signup-9.html">Signup 9</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-signup-10.html">Signup 10</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-signup-11.html">Signup 11</a></li>
+                                                    <li class="dropdown-item"><a class="nav-link" href="../../unify-main/pages/page-signup-12.html">Signup 12</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- End Header -->
+        <!-- Promo Block -->
+        <section class="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll loaded dzsprx-readyall" data-options='{direction: "reverse", settings_mode_oneelement_max_offset: "150"}'>
+            <div class="divimage dzsparallaxer--target w-100 g-bg-pos-bottom-center" style="height: 120%; background-image: url(../../assets/img-temp/1920x1080/img25.jpg);"></div>
+
+            <div class="container g-py-200">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="g-color-black g-font-weight-300 g-font-size-40 g-line-height-1_2 mb-4">Have an easy<br>website with Unify</h3>
+                        <span class="d-block g-color-black-opacity-0_8 g-font-size-16 mb-5">Build, share, sell and enjoy.</span>
+                        <a class="js-fancybox u-link-v5 g-color-black" href="https://vimeo.com/167434033" title="Single Image">
+                            <span class="align-middle u-icon-v3 u-block-hover--scale g-bg-white g-color-black g-color-primary--hover g-rounded-50x g-cursor-pointer mr-2">
+                                <i class="g-font-size-18 g-pos-rel g-left-2 fa fa-play"></i>
+                            </span>
+                            1:41 minutes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Promo Block -->
+
+        @RenderBody()
+
+        
+        <!-- Footer -->
+        <div class="g-bg-black-opacity-0_9 g-color-white-opacity-0_8 g-py-60">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Content -->
+                    <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+                        <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
+                            <h2 class="u-heading-v2__title h6 text-uppercase mb-0">หน่วยงาน</h2>
+                        </div>
+                        <p  class="text-center">
+                            <img src="~/assets/img/logo/logo-1a.gif" class="img-responsive footer-logo"  width="150" alt="กรมส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ"><br/>
+                            กรมส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+                        <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
+                            <h2 class="u-heading-v2__title h6 text-uppercase mb-0">ข้อมูล CIO</h2>
+                        </div>
+                        <article>
+                            <h3 class="h6 g-mb-2">
+                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">ประวัติ CIO</a>
+                            </h3>
+                        </article>
+
+                        <hr class="g-brd-white-opacity-0_1 g-my-10">
+
+                        <article>
+                            <h3 class="h6 g-mb-2">
+                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">ข่าวสารจาก CIO</a>
+                            </h3>
+                        </article>
+
+                        <hr class="g-brd-white-opacity-0_1 g-my-10">
+
+                        <article>
+                            <h3 class="h6 g-mb-2">
+                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">ติดต่อ CIO</a>
+                            </h3>
+                        </article>
+                    </div> 
+
+                    <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+                        <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
+                            <h2 class="u-heading-v2__title h6 text-uppercase mb-0">ข้อมูลที่น่าสนใจ</h2>
+                        </div>
+                        <nav class="text-uppercase1">
+                            <ul class="list-unstyled g-mt-minus-10 mb-0">
+                                <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                    <h4 class="h6 g-pr-20 mb-0">
+                                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">ประวัติความเป็นมา</a>
+                                        <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                    </h4>
+                                </li>
+                                <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                    <h4 class="h6 g-pr-20 mb-0">
+                                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">ค่านิยม วิสัยทัศน์ พันธกิจ</a>
+                                        <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                    </h4>
+                                </li>
+                                <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                    <h4 class="h6 g-pr-20 mb-0">
+                                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">ภารกิจ อำนาจหน้าที่</a>
+                                        <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                    </h4>
+                                </li>
+                                <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                    <h4 class="h6 g-pr-20 mb-0">
+                                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">โครงสร้างหน่วยงาน</a>
+                                        <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                    </h4>
+                                </li>
+                                <li class="g-pos-rel g-py-10">
+                                    <h4 class="h6 g-pr-20 mb-0">
+                                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">ติด่อ พก.</a>
+                                        <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                    </h4>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
+                            <h2 class="u-heading-v2__title h6 text-uppercase mb-0">ติดต่อ</h2>
+                        </div>
+                        <address class="g-bg-no-repeat g-font-size-12 mb-0" style="background-image: url(/assets/img/maps/map2.png);">
+                            <div class="d-flex g-mb-20">
+                                <div class="g-mr-10">
+                                    <span class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-color-white-opacity-0_6">
+                                        <i class="fa fa-map-marker"></i>
+                                    </span>
+                                </div>
+                                <p class="mb-0"> ที่อยู่: 255 อาคาร 60 ปี กรมประชาสงเคราะห์ ถนนราชวิถี เขตราชเทวี กรุงเทพฯ 10400</p>
+                            </div>
+                            <div class="d-flex g-mb-20">
+                                <div class="g-mr-10">
+                                    <span class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-color-white-opacity-0_6">
+                                        <i class="fa fa-phone"></i>
+                                    </span>
+                                </div>
+                                <p class="mb-0">เบอร์โทรศัพท์: 02-354-3388 <br> เบอร์โทรสาร: 02-354-5020</p>
+                            </div>
+                            <div class="d-flex g-mb-20">
+                                <div class="g-mr-10">
+                                    <span class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-color-white-opacity-0_6">
+                                        <i class="fa fa-globe"></i>
+                                    </span>
+                                </div>
+                                <p class="mb-0">
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="mailto:info@htmlstream.com"> webmaster@dep.go.th</a>
+                                    <br>
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" target="_blank" href="https:/www.dep.go.th">www.dep.go.th</a>
+                                </p>
+                            </div>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Footer -->
+
+        <!-- Copyright Footer -->
+        <footer class="g-bg-gray-dark-v1 g-color-white-opacity-0_8 g-py-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 text-center text-md-left g-mb-10 g-mb-0--md">
+                        <div class="d-lg-flex">
+                            <small class="d-block g-font-size-default g-mr-10 g-mb-10 g-mb-0--md">Powered by</small>
+                            <ul class="u-list-inline">
+                                <li class="list-inline-item">
+                                    <span><a href="http://www.tanasan.co.th">ASP.NET Core Technology.</a></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 align-self-center">
+                        <ul class="list-inline text-center text-md-right mb-0">
+                            <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Facebook">
+                                <a href="#" class="g-color-white-opacity-0_5 g-color-white--hover">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="youtube">
+                                <a href="#" class="g-color-white-opacity-0_5 g-color-white--hover">
+                                    <i class="fa fa-youtube-play"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    
+
+
+    <!-- JS Global Compulsory -->
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/tether.min.js"></script>
+    <script src="/assets/vendor/bootstrap/bootstrap.min.js"></script>
+    <!-- JS Implementing Plugins -->
+    <script src="/assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
+    <script src="/assets/vendor/dzsparallaxer/dzsparallaxer.js"></script>
+    <script src="/assets/vendor/dzsparallaxer/dzsscroller/scroller.js"></script>
+    <script src="/assets/vendor/dzsparallaxer/advancedscroller/plugin.js"></script>
+    <script src="/assets/vendor/fancybox/jquery.fancybox.min.js"></script>
+    <script src="/assets/vendor/slick-carousel/slick/slick.js"></script>
+    <script src="/assets/vendor/typedjs/typed.min.js"></script>
+    <!-- JS Unify -->
+    <script src="/assets/js/hs.core.js"></script>
+    <script src="/assets/js/components/hs.header.js"></script>
+    <script src="/assets/js/helpers/hs.hamburgers.js"></script>
+    <script src="/assets/js/components/hs.tabs.js"></script>
+    <script src="/assets/js/components/hs.popup.js"></script>
+    <script src="/assets/js/components/hs.carousel.js"></script>
+    <script src="/assets/js/components/text-animation/hs.text-slideshow.js"></script>
+    <!-- JS Customization -->
+    <script src="/assets/js/custom.js"></script>
+    @RenderSection("scripts", false)
+    <!-- JS Plugins Init. -->
+    <script>
+      $(document).on('ready', function () {
+        // Header
+        $.HSCore.components.HSHeader.init($('#js-header'));
+        $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+        // Initialization of HSMegaMenu plugin
+        $('.js-mega-menu').HSMegaMenu({
+          event: 'hover',
+          pageContainer: $('.container'),
+          breakpoint: 991
+        });
+
+        // Init popups with media
+        $.HSCore.components.HSPopup.init('.js-fancybox');
+        $.HSCore.components.HSPopup.init('.js-fancybox-media', {
+          helpers: {
+            media: {},
+            overlay: {
+              css: {
+                'background': 'rgba(255, 255, 255, .8)'
+              }
+            }
+          }
+        });
+
+        // Slick Carousel
+        $.HSCore.components.HSCarousel.init('.js-carousel');
+
+        // initialization of text animation (typing)
+        $(".u-text-animation.u-text-animation--typing").typed({
+          strings: ["an awesome template", "perfect template", "just like a boss"],
+          typeSpeed: 60,
+          loop: true,
+          backDelay: 1500,
+        });
+
+        // Parallax
+        dzsas_init('#as0', {
+          settings_mode: 'onlyoneitem',
+          design_arrowsize: '0',
+          settings_swipe: 'on',
+          settings_swipeOnDesktopsToo: 'on',
+          settings_slideshow: 'on',
+          settings_slideshowTime: '300',
+          settings_autoHeight: 'off',
+          settings_transition: 'fade',
+          settings_centeritems: false
+        });
+      });
+    </script>
+</body>
+</html>

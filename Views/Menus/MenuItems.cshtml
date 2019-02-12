@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CRM.Models.MenuItems>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "รายการเมนูย่อย";
+}
+<div id="content">
+    <input type="hidden" value="@ViewBag.MenuId" id="MenuId">
+    <section id="widget-grid" class="">
+        <div class="row">
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-bottom-5">
+                <a class="btn btn-success" data-toggle="modal" id="add" data-target="#ButtonAdd">
+                    <i class="fa fa-plus"></i> เพิ่มเมนูย่อย
+                </a>
+                <a class="btn btn-danger" data-toggle="modal" id="delAll" data-OrgId="@ViewBag.MenuId">
+                    <i class="fa fa-trash-o"></i> ลบทั้งหมด
+                </a>
+            </article>
+        </div>
+    </section>
+    <section id="widget-grid" class="">
+        <div class="row">
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+                <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" id="wid-id-2" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" role="widget" style="">
+                    <header role="heading">
+                        <h2 class="font-md"><i class="fa fa-list-ul"></i> @ViewData["Title"]</h2>
+                        <span class="jarviswidget-loader" style="display: none;"><i class="fa fa-refresh fa-spin"></i></span>
+                    </header>
+                    <!-- widget div-->
+                    <div role="contentinfo" style="display: block;">
+                        <div class="jarviswidget-editbox"></div>
+                        <div class="widget-body">
+                            <span id="loading"></span>
+                            <div id="ShowMenuItem"></div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>
+
+@* Add MenuItem *@
+<div class="modal fade" id="ButtonAdd" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="ModalFormAdd"></div>
+    </div>
+</div>
+@* End Add MenuItem *@
+
+@* Edit MenuItem  *@
+<div class="modal fade" id="ButtonUpdate" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <span id="ModalFormUpdate"></span>
+        </div>
+    </div>
+</div>
+@* End MenuItem *@
+
+
+@section scripts{
+    <link href="~/css/fontawesome-iconpicker.min.css" rel="stylesheet">
+    <!-- PAGE RELATED PLUGIN(S) -->
+    <script src="~/js/plugin/jquery-nestable/jquery.nestable.min.js"></script>
+    <!-- JQUERY SELECT2 INPUT -->
+    <script src="~/js/plugin/select2/select2.min.js"></script>
+    <script src="~/js/customJS/menus/MenuItems.js"></script>
+    <!-- bootstrapValidator Form -->
+    <script src="~/js/plugin/bootstrapvalidator/bootstrapValidator.min.js"></script>
+    <script src="~/js/fontawesome-iconpicker/fontawesome-iconpicker.min.js"></script>
+}

@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "ระบบจัดการสิทธิ์การใช้งานเมนู";
+    
+}
+
+<div id="content">
+    <section id="widget-grid" class="">
+        <div class="row">
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>@ViewData["Title"]</h2>
+                    </header>
+                    <div>
+                        <div class="jarviswidget-editbox"></div>
+                        <div class="widget-body no-padding">
+
+                        @* Users *@  
+                        <div id="ShowMenus"></div>
+
+                        
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>
+
+
+    @section Scripts{
+        <!-- PAGE RELATED PLUGIN(S) -->
+        <script src="~/js/plugin/datatables/jquery.dataTables.min.js"></script>
+        <script src="~/js/plugin/datatables/dataTables.colVis.min.js"></script>
+        <script src="~/js/plugin/datatables/dataTables.tableTools.min.js"></script>
+        <script src="~/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+        <script src="~/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+        <script src="~/js/customJS/menus/RoleMenu.js"></script>
+    }
