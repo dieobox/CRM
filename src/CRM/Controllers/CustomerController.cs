@@ -37,9 +37,44 @@ namespace CRM.Controllers
             _environment = environment;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Gets()
+        {
+            var Get = DB.Customers;
+
+            return PartialView("Gets", Get);
+        }
+
+        [HttpGet]
+        public IActionResult FormAdd()
+        {
+            return PartialView("FormAdd");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Add(Customers model)
+        {
+            string msg = "";
+            try
+            {
+                model.CustomerId = "askdjaosijdiefraefe";
+                DB.Customers.Add(model);
+                DB.SaveChanges();
+                msg = "บันทุกสำเร็จ";
+            }
+            catch (Exception error)
+            {
+                msg = "Error is : " + error.Message;
+                return Json(new { valid = false, message = msg });
+            }
+            return Json(new { valid = false, message = msg });
         }
     }
 }
