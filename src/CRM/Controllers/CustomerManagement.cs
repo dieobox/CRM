@@ -66,7 +66,7 @@ namespace CRM.Controllers
                 Model.CustomerId = Guid.NewGuid().ToString("N");
                 DB.Customers.Add(Model);
                 DB.SaveChanges();
-                msg = "บันทุกสำเร็จ";
+                msg = "บันทึกสำเร็จ";
             }
             catch (Exception error)
             {
