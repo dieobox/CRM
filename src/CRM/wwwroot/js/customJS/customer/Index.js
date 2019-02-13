@@ -95,6 +95,16 @@
 
         });
 
+        $("#license").on("click", function () {
+            var CustomerId = $("input[name=Choose]:checked").val();
+            window.location.href = "/licenseManagement/Index?CustomerId=" + CustomerId;
+        });
+
+        $("#comment").on("click", function () {
+            var CustomerId = $("input[name=Choose]:checked").val();
+            window.location.href = "/licenseManagement/Index?CustomerId=" + CustomerId;
+        });
+
     });
 
     $("#add").click(function () {
