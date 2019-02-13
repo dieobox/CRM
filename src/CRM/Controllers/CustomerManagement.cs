@@ -101,5 +101,25 @@ namespace CRM.Controllers
             }
             return Json(new { valid = true, message = msg });
         }
+
+        [HttpGet]
+        public IActionResult DeleteCustomer(string CustomerId)
+        {
+            string msg = "";
+            try
+            {
+                var Get = DB.Customers.Where(w => w.CustomerId == CustomerId).FirstOrDefault();
+                DB.Remove(Get);
+                DB.SaveChanges();
+                msg = "ลบสำเร็จ";
+
+            }
+            catch (Exception e)
+            {
+                msg = "Error is : " + e.Message;
+                return Json(new { valid = false, message = msg });
+            }
+            return Json(new { valid = true, message = msg });
+        }
     }
 }
