@@ -97,12 +97,40 @@
 
         $("#license").on("click", function () {
             var CustomerId = $("input[name=Choose]:checked").val();
-            window.location.href = "/licenseManagement/Index?CustomerId=" + CustomerId;
+            if (CustomerId == null)
+            {
+                $.smallBox({
+                    title: "กรุณาเลือกบริษัท",
+                    content: "<i class='fa fa-clock-o'></i> กรุณาเลือกบริษัท<i></i>",
+                    color: "#FB0404",
+                    iconSmall: "fa fa-thumbs-up bounce animated",
+                    timeout: 9000
+                });
+                
+                return false;
+            }
+            else {
+
+            } window.location.href = "/licenseManagement/Index?CustomerId=" + CustomerId;
+            
         });
 
         $("#comment").on("click", function () {
             var CustomerId = $("input[name=Choose]:checked").val();
-            window.location.href = "/licenseManagement/Index?CustomerId=" + CustomerId;
+            if (CustomerId == null) {
+                $.smallBox({
+                    title: "กรุณาเลือกบริษัท",
+                    content: "<i class='fa fa-clock-o'></i> กรุณาเลือกบริษัท<i></i>",
+                    color: "#FB0404",
+                    iconSmall: "fa fa-thumbs-up bounce animated",
+                    timeout: 9000
+                });
+
+                return false;
+            }
+            else {
+
+            } window.location.href = "/licenseManagement/Index?CustomerId=" + CustomerId;
         });
 
     });
@@ -155,10 +183,6 @@
             })
         });
     });
-
-   
-
-
 
 });
 
