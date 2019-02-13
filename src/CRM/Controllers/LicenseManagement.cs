@@ -62,6 +62,7 @@ namespace CRM.Controllers
                 Model.EndDate = DateTime.Now;
                 ViewModel.Add(Model);
             }
+            
             return PartialView("Gets", ViewModel);
         }
     }

@@ -205,7 +205,7 @@ namespace DEPIntranet.UsersManagement
                             await PictureFile.CopyToAsync(fileStream);
                         }
 
-                        model.PictureFile = UniqueFileName;
+                        ThisUser.PictureFile = UniqueFileName;
                         ImageBuilder.Current.Build(Path.Combine(Uploads, UniqueFileName), Path.Combine(Uploads, UniqueFileName), new ResizeSettings("format=jpg&mode=max&quality=50"), true);
                     }
                 }
