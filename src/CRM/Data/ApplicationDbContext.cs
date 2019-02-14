@@ -28,5 +28,6 @@ namespace CRM.Data
         public DbSet<RoleMenus> RoleMenus { get; set; }
         public DbSet<Licenses> Licenses { get; set; }
         public DbSet<Customers> Customers { get; set; }
+        public DbSet<Comments> Comments { get; set; }
     }
 }
