@@ -36,7 +36,9 @@
                                 <div class="col-lg-6">
                                     <input type="text" class="form-control" asp-for="ClientsLimit"
                                            data-bv-notempty="true"
-                                           data-bv-notempty-message="กรุณากรอก Client Limit" />
+                                           data-bv-notempty-message="กรุณากรอก Client Limit"
+                                           data-bv-integer="true"
+                                           data-bv-integer-message="กรุณากรอกรหัสสถานะตัวเลข" />
                                 </div>
                             </div>
                         </fieldset>
@@ -46,7 +48,9 @@
                                 <div class="col-lg-6">
                                     <input type="text" class="form-control" asp-for="ConsoleLimit"
                                            data-bv-notempty="true"
-                                           data-bv-notempty-message="กรุณากรอก Console Limit" />
+                                           data-bv-notempty-message="กรุณากรอก Console Limit"
+                                           data-bv-integer="true"
+                                           data-bv-integer-message="กรุณากรอกรหัสสถานะตัวเลข" />
                                 </div>
                             </div>
                         </fieldset>
@@ -82,21 +86,93 @@
                         </fieldset>
                         <fieldset>
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">StartDate</label>
-                                <div class="col-lg-6">
-                                    <input type="text" class="form-control" asp-for="StartDate"  
-                                           data-bv-notempty="true"
-                                           data-bv-notempty-message="กรุณากรอก StartDate" />
+                                <label class="col-xs-3 col-md-3 col-lg-3 control-label">Start Date</label>
+                                <div class="col-xs-2 col-md-2 col-lg-2">
+                                    <input type="hidden" class="StartMonth" value="@Model.StartDate.Day">
+                                    <select id="StartDay" name="StartDay" style="width:100%"></select>
+                                </div>
+                                <div class="col-xs-2 col-md-2 col-lg-2">
+                                    <select id="StartMonth" name="StartMonth" style="width:100%">
+                                        @{
+                                            string[] MonthName = { "", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" };
+                                            for (int m = 1; m < MonthName.Count();)
+                                            {
+                                                if (Model.StartDate.Month == m)
+                                                {
+                                                    <option value="@m" selected>@MonthName[m]</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@m">@MonthName[m]</option>
+                                                }
+                                                m++;
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-xs-2 col-md-2 col-lg-2">
+                                    <select id="StartYear" name="StartYear" style="width:100%">
+                                        @{
+                                            int Year = Model.StartDate.Year;
+                                            for (int y = (Year + 5); y >= Year; y--)
+                                            {
+                                                if (y == DateTime.Now.Year)
+                                                {
+                                                    <option value="@y" selected>@(y + 543)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@y">@(y + 543)</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset>
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">ExpireDate</label>
-                                <div class="col-lg-6">
-                                    <input type="text" class="form-control" asp-for="ExpireDate"  
-                                           data-bv-notempty="true"
-                                           data-bv-notempty-message="กรุณากรอก ExpireDate" />
+                                <label class="col-xs-3 col-md-3 col-lg-3 control-label">Expire Date</label>
+                                <div class="col-xs-2 col-md-2 col-lg-2">
+                                    <input type="hidden" class="ExDay" value="@Model.ExpireDate.Day">
+                                    <select id="ExDay" name="ExDay" style="width:100%"></select>
+                                </div>
+                                <div class="col-xs-2 col-md-2 col-lg-2">
+                                    <select id="ExMonth" name="ExMonth" style="width:100%">
+                                        @{
+                                            string[] ExMonthName = { "", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" };
+                                            for (int m = 1; m < ExMonthName.Count();)
+                                            {
+                                                if (Model.ExpireDate.Month == m)
+                                                {
+                                                    <option value="@m" selected>@MonthName[m]</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@m">@MonthName[m]</option>
+                                                }
+                                                m++;
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-xs-2 col-md-2 col-lg-2">
+                                    <select id="ExYear" name="ExYear" style="width:100%">
+                                        @{
+                                            int ExYear = DateTime.Now.Year;
+                                            for (int y = (ExYear + 5); y >= ExYear; y--)
+                                            {
+                                                if (y == Model.ExpireDate.Year)
+                                                {
+                                                    <option value="@y" selected>@(y + 543)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@y">@(y + 543)</option>
+                                                }
+                                            }
+                                        }
+                                    </select>
                                 </div>
                             </div>
                         </fieldset>

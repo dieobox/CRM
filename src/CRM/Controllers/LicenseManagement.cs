@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using CRM.ViewModels.LicenseManagement;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CRM.Controllers
 {
@@ -61,7 +62,7 @@ namespace CRM.Controllers
                 Model.ConsoleLimit = Get.ConsoleLimit;
                 Model.LicenseId = Get.LicenseId;
                 Model.LicensePlan = Get.LicensePlan;
-                Model.Amount = Math.Abs((Get.StartDate - Get.ExpireDate).TotalDays);
+                Model.Amount = Math.Round(Math.Abs((Get.ExpireDate - DateTime.Now).TotalDays));
                 Model.StartDate = Helper.getShortDate(Get.StartDate);
                 Model.ExpireDate = Helper.getShortDate(Get.ExpireDate);
                 ViewModel.Add(Model);
@@ -80,11 +81,13 @@ namespace CRM.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Add(Licenses Model)
+        public IActionResult Add(Licenses Model, int StartDay, int StartMonth, int StartYear, int ExDay, int ExMonth, int ExYear)
         {
             string msg = "";
             try
             {
+                Model.StartDate = new DateTime(StartYear, StartMonth, StartDay);
+                Model.ExpireDate = new DateTime(ExYear, ExMonth, ExDay);
                 Model.ActivatedDate = null;
                 DB.Licenses.Add(Model);
                 DB.SaveChanges();
@@ -107,12 +110,13 @@ namespace CRM.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Licenses Model)
+        public IActionResult Edit(Licenses Model, int StartDay, int StartMonth, int StartYear, int ExDay, int ExMonth, int ExYear)
         {
             string msg = "";
             try
             {
-                Model.ActivatedDate = null;
+                Model.StartDate = new DateTime(StartYear, StartMonth, StartDay);
+                Model.ExpireDate = new DateTime(ExYear, ExMonth, ExDay);
                 DB.Licenses.Update(Model);
                 DB.SaveChanges();
                 msg = "บันทึกสำเร็จ";
@@ -124,8 +128,7 @@ namespace CRM.Controllers
             }
             return Json(new { valid = true, message = msg });
         }
-
-
+        
         // helper
         public string GetnerateProductId()
         {
@@ -157,6 +160,37 @@ namespace CRM.Controllers
                 ProductId = ProductIdCheck;
             }
             return ProductId;
+        }
+
+        [HttpGet]
+        public IActionResult GetDay(int Month, int Year)
+        {
+            string Msg = "";
+            try
+            {
+                List<SelectListItem> _Ddays = new List<SelectListItem>();
+                int Ddays = DateTime.DaysInMonth(Year, Month);
+                for (int i = 1; i <= Ddays; i++)
+                {
+                    var DT = new DateTime(Year, Month, i);
+                    if (DateTime.Now.Day == i)
+                    {
+                        _Ddays.Add(new SelectListItem() { Text = i.ToString(), Value = i.ToString(), Selected = true });
+                    }
+                    else
+                    {
+                        _Ddays.Add(new SelectListItem() { Text = i.ToString(), Value = i.ToString(), Selected = true });
+                    }
+
+                    ViewBag.Day = _Ddays;
+                }
+            }
+            catch (Exception e)
+            {
+                Msg = "Error is :" + e.InnerException;
+            }
+
+            return Json(ViewBag.Day);
         }
     }
 }

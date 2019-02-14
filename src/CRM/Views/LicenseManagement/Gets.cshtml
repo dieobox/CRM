@@ -28,7 +28,22 @@
                         <td class="text-right">@list.LicensePlan </td>
                         <td class="text-center">@list.StartDate</td>
                         <td class="text-center">@list.ExpireDate</td>
-                        <td class="text-right" style="color:red">@list.Amount วัน</td>
+                        <td class="text-right">
+                            @{
+                                if (list.Amount > 61)
+                                {
+                                    <text><span style="color:green"> @list.Amount วัน</span> </text>
+                                }
+                                else if (list.Amount >= 30 && list.Amount <= 60)
+                                {
+                                    <text><span style="color:orange"> @list.Amount วัน</span> </text>
+                                }
+                                else if(list.Amount > 0 && list.Amount <= 30)
+                                {
+                                    <text><span style="color:red"> @list.Amount วัน</span> </text>
+                                }
+                            }
+                        </td>
                         <td class="text-align-center">
                             <button class="btn btn-warning btn-xs  edit" value="@list.LicenseId" style="font-size:10px;" data-toggle="modal" id="edit" data-target="#ButtonEdit"><i class="fa fa-pencil"></i> แก้ไข</button>
                             <button class="btn btn-danger btn-xs   delete" value="@list.LicenseId" style="font-size:10px;"><i class="fa fa-eraser"></i> ลบ</button>

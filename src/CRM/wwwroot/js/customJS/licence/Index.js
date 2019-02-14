@@ -8,6 +8,40 @@
                 $("#MomdalFormEdit").html(rs);
                 $("#ButtonEdit").modal();
 
+                // Start Date
+                $("#StartDay").select2();
+                $("#StartMonth").select2();
+                $("#StartYear").select2();
+                $("#StartMonth").change(function () {
+                    $.get("/LicenseManagement/GetDay", { "Month": $("#StartMonth").val(), "Year": $("#StartYear").val() }, function (rs) {
+                        $("#StartDay").empty();
+                        $.each(rs, function (i, val) {
+                            $("#StartDay").append($("<option></option>").attr("value", val.value).text(val.text).attr("disabled", val.disabled));
+                        });
+                        $('#StartDay option[value="' + $(".StartDay").val() + '"]').attr("selected", "selected");
+                        $("#StartDay").select2();
+                    });
+                    $("#StartDay").val($("#StartDay").val()).change();
+                });
+                $("#StartMonth").val($("#StartMonth").val()).change();
+
+                // Expire date
+                $("#ExDay").select2();
+                $("#ExMonth").select2();
+                $("#ExYear").select2();
+                $("#ExMonth").change(function () {
+                    $.get("/LicenseManagement/GetDay", { "Month": $("#ExMonth").val(), "Year": $("#ExYear").val() }, function (rs) {
+                        $("#ExDay").empty();
+                        $.each(rs, function (i, val) {
+                            $("#ExDay").append($("<option></option>").attr("value", val.value).text(val.text).attr("disabled", val.disabled));
+                        });
+                        $('#ExDay option[value="' + $(".ExDay").val() + '"]').attr("selected", "selected");
+                        $("#ExDay").select2();
+                    });
+                    $("#ExDay").val($("#ExDay").val()).change();
+                });
+                $("#ExMonth").val($("#ExMonth").val()).change();
+
                 //Validate Form
                 $('#FormEdit').bootstrapValidator();
                 $("#submit").click(function () {
@@ -60,6 +94,38 @@
         $.get("/LicenseManagement/FormAdd", { "CustomerId": $("#CustomerId").val() }, function (rs) {
             $("#MomdalFormAdd").html(rs);
             $("#ButtonAdd").modal();
+
+            // Start Date
+            $("#StartDay").select2();
+            $("#StartMonth").select2();
+            $("#StartYear").select2();
+            $("#StartMonth").change(function () {
+                $.get("/LicenseManagement/GetDay", { "Month": $("#StartMonth").val(), "Year": $("#StartYear").val() }, function (rs) {
+                    $("#StartDay").empty();
+                    $.each(rs, function (i, val) {
+                        $("#StartDay").append($("<option></option>").attr("value", val.value).text(val.text).attr("disabled", val.disabled));
+                    });
+                    $("#StartDay").select2();
+                });
+                $("#StartDay").val($("#StartDay").val()).change();
+            });
+            $("#StartMonth").val($("#StartMonth").val()).change();
+
+            // Expire date
+            $("#ExDay").select2();
+            $("#ExMonth").select2();
+            $("#ExYear").select2();
+            $("#ExMonth").change(function () {
+                $.get("/LicenseManagement/GetDay", { "Month": $("#ExMonth").val(), "Year": $("#ExYear").val() }, function (rs) {
+                    $("#ExDay").empty();
+                    $.each(rs, function (i, val) {
+                        $("#ExDay").append($("<option></option>").attr("value", val.value).text(val.text).attr("disabled", val.disabled));
+                    });
+                    $("#ExDay").select2();
+                });
+                $("#ExDay").val($("#ExDay").val()).change();
+            });
+            $("#ExMonth").val($("#ExMonth").val()).change();
 
             //Validate Form
             $('#FormAdd').bootstrapValidator();
