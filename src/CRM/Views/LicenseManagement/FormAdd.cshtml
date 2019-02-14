@@ -58,9 +58,7 @@
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">License Plan</label>
                                 <div class="col-lg-6">
-                                    <input type="text" class="form-control" asp-for="LicensePlan"
-                                           data-bv-notempty="true"
-                                           data-bv-notempty-message="กรุณากรอก LicensePlan"/>
+                                    @Html.DropDownList("LicensePlan", (IEnumerable<SelectListItem>) ViewBag.LicensePlant, new { @style="width:100%"})
                                 </div>
                             </div>
                         </fieldset>

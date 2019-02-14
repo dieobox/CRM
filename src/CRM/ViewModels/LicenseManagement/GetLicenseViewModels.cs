@@ -12,7 +12,7 @@ namespace CRM.ViewModels.LicenseManagement
         public string Customername { get; set; }
         public int ClientsLimit { get; set; }
         public int ConsoleLimit { get; set; }
-        public int LicensePlan { get; set; }
+        public string LicensePlan { get; set; }
         public double Amount { get; set; }
         public string StartDate { get; set; }
         public string ExpireDate { get; set; }

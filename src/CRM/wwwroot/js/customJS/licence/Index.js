@@ -8,6 +8,9 @@
                 $("#MomdalFormEdit").html(rs);
                 $("#ButtonEdit").modal();
 
+
+                $("#LicensePlan").select2();
+
                 // Start Date
                 $("#StartDay").select2();
                 $("#StartMonth").select2();
@@ -94,6 +97,8 @@
         $.get("/LicenseManagement/FormAdd", { "CustomerId": $("#CustomerId").val() }, function (rs) {
             $("#MomdalFormAdd").html(rs);
             $("#ButtonAdd").modal();
+
+            $("#LicensePlan").select2();
 
             // Start Date
             $("#StartDay").select2();

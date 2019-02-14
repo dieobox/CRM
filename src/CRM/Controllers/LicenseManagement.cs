@@ -54,6 +54,7 @@ namespace CRM.Controllers
         {
             var ViewModel = new List<GetLicenseViewModels>();
             var Customer = DB.Customers;
+            var LicensePlate = DB.Licenses_Plant;
             foreach (var Get in DB.Licenses.Where(w=>w.CustomerId == CustomerId))
             {
                 var Model = new GetLicenseViewModels();
@@ -61,7 +62,7 @@ namespace CRM.Controllers
                 Model.ClientsLimit = Get.ClientsLimit;
                 Model.ConsoleLimit = Get.ConsoleLimit;
                 Model.LicenseId = Get.LicenseId;
-                Model.LicensePlan = Get.LicensePlan;
+                Model.LicensePlan = LicensePlate.Where(w => w.LicensePlantNumber == Get.LicensePlan).Select(s => s.LicensePlantName).FirstOrDefault(); ;
                 Model.Amount = Math.Round(Math.Abs((Get.ExpireDate - DateTime.Now).TotalDays));
                 Model.StartDate = Helper.getShortDate(Get.StartDate);
                 Model.ExpireDate = Helper.getShortDate(Get.ExpireDate);
@@ -76,6 +77,7 @@ namespace CRM.Controllers
         {
             ViewBag.CustomerId = CustomerId;
             ViewBag.ProductId = CheckProductId();
+            ViewBag.LicensePlant = new SelectList(DB.Licenses_Plant.ToList(), "LicensePlantNumber", "LicensePlantName");
             return PartialView("FormAdd");
         }
 
@@ -104,7 +106,9 @@ namespace CRM.Controllers
         [HttpGet]
         public IActionResult FormEdit(int LicenseId)
         {
+            
             var Get = DB.Licenses.Where(w => w.LicenseId == LicenseId).FirstOrDefault();
+            ViewBag.LicensePlant = new SelectList(DB.Licenses_Plant.ToList(), "LicensePlantNumber", "LicensePlantName", Get.LicensePlan);
             return PartialView("FormEdit", Get);
         }
 
