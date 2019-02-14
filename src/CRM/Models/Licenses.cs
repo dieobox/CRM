@@ -23,7 +23,7 @@ namespace CRM.Models
         public string SaleName { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime ExpireDate { get; set; }
-        public DateTime ActivatedDate { get; set; }
+        public DateTime? ActivatedDate { get; set; }
         public bool IsKeyRequested { get; set; }
         public bool IsActivated { get; set; }
         public string IPAddress { get; set; }

@@ -1,9 +1,112 @@
 ﻿$(function () {
-    $.get("/Licensemanagement/Gets", function (rs) {
+    $.get("/Licensemanagement/Gets", { "CustomerId": $("#CustomerId").val() }, function (rs) {
         $("#jsonShow").html(rs);
         Datatable();
+
+        $("#jsonShow").on("click", ".edit", function () {
+            $.get("/Licensemanagement/FormEdit", { "LicenseId": $(this).val() }, function (rs) {
+                $("#MomdalFormEdit").html(rs);
+                $("#ButtonEdit").modal();
+
+                //Validate Form
+                $('#FormEdit').bootstrapValidator();
+                $("#submit").click(function () {
+                    $('#FormEdit').data("bootstrapValidator").validate();
+                    if ($('#FormEdit').data("bootstrapValidator").isValid() == true) {
+                        var Data = new FormData($("#FormEdit")[0]);
+                        $.ajax(
+                        {
+                            type: "POST",
+                            url: "/LicenseManagement/Edit",
+                            contentType: false,
+                            processData: false,
+                            data: Data,
+                            success: function (response) {
+                                if (response.valid == true) {
+                                    $.smallBox({
+                                        title: response.message,
+                                        content: "<i class='fa fa-clock-o'></i> <i>" + response.message + "</i>",
+                                        color: "#296191", // red color code #FB0404
+                                        iconSmall: "fa fa-thumbs-up bounce animated",
+                                        timeout: 2000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.href = "/LicenseManagement/Index?CustomerId=" + $("#CustomerId").val();
+                                    }, 1000)
+                                } else {
+                                    $.smallBox({
+                                        title: response.message,
+                                        content: "<i class='fa fa-clock-o'></i> <i>" + response.message + "</i>",
+                                        color: "#FB0404", // red color code #FB0404
+                                        iconSmall: "fa fa-thumbs-up bounce animated",
+                                        timeout: 2000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.href = "/LicenseManagement/Index?CustomerId=" + $("#CustomerId").val();
+                                    }, 1000)
+                                }
+                            }
+                        });
+                    }
+                })
+            });
+        });
+    });
+
+
+
+    // add 
+    $("#add").click(function () {
+        $.get("/LicenseManagement/FormAdd", { "CustomerId": $("#CustomerId").val() }, function (rs) {
+            $("#MomdalFormAdd").html(rs);
+            $("#ButtonAdd").modal();
+
+            //Validate Form
+            $('#FormAdd').bootstrapValidator();
+            $("#submit").click(function () {
+                $('#FormAdd').data("bootstrapValidator").validate();
+                if ($('#FormAdd').data("bootstrapValidator").isValid() == true) {
+                    var Data = new FormData($("#FormAdd")[0]);
+                    $.ajax(
+                    {
+                        type: "POST",
+                        url: "/LicenseManagement/Add",
+                        contentType: false,
+                        processData: false,
+                        data: Data,
+                        success: function (response) {
+                            if (response.valid == true) {
+                                $.smallBox({
+                                    title: response.message,
+                                    content: "<i class='fa fa-clock-o'></i> <i>" + response.message + "</i>",
+                                    color: "#296191", // red color code #FB0404
+                                    iconSmall: "fa fa-thumbs-up bounce animated",
+                                    timeout: 2000
+                                });
+                                setTimeout(function () {
+                                    window.location.href = "/LicenseManagement/Index?CustomerId=" + $("#CustomerId").val();
+                                }, 1000)
+                            } else {
+                                $.smallBox({
+                                    title: response.message,
+                                    content: "<i class='fa fa-clock-o'></i> <i>" + response.message + "</i>",
+                                    color: "#FB0404", // red color code #FB0404
+                                    iconSmall: "fa fa-thumbs-up bounce animated",
+                                    timeout: 2000
+                                });
+                                setTimeout(function () {
+                                    window.location.href = "/LicenseManagement/Index?CustomerId=" + $("#CustomerId").val();
+                                }, 1000)
+                            }
+                        }
+                    });
+                }
+            })
+        });
     });
 });
+
+
 
 function Datatable() {
     var responsiveHelper_dt_basic = undefined;

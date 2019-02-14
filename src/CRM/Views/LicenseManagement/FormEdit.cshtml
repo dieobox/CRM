@@ -1,0 +1,119 @@
+﻿@model CRM.Models.Licenses
+
+<div id="content">
+    <section id="widget-grid" class="">
+        <div class="jarviswidget" id="wid-id-4" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
+            <header>
+                <h2><i class="fa fa-plus"></i> เพิ่มข้อมูล</h2>
+            </header>
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <input class="form-control" type="text">
+                </div>
+                <div class="widget-body">
+
+                    @* Form *@
+                    <form id="FormEdit" class="form-horizontal"
+                          enctype="multipart/form-data"
+                          asp-antiforgery="true"
+                          data-bv-message="This value is not valid"
+                          data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+                          data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+                          data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+                        <fieldset>
+                            <legend style="color:red;">กรุณากรอกข้อมูลให้ครบถ้วน</legend>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Product ID</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="ProductId"  readonly />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Client Limit</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="ClientsLimit"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอก Client Limit" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Console Limit</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="ConsoleLimit"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอก Console Limit" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">License Plan</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="LicensePlan"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอก LicensePlan" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Dealer Name</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="DealerName"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอก DealerName" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Sale Name</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="SaleName"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอก Sale Name" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">StartDate</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="StartDate"  
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอก StartDate" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">ExpireDate</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="ExpireDate"  
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอก ExpireDate" />
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <input type="hidden" asp-for="CustomerId">
+                        <input type="hidden" asp-for="LicenseId">
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success" type="submit" id="submit">บันทึก</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

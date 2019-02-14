@@ -5,8 +5,13 @@
         <thead>
             <tr>
                 <th class="text-align-center">ลำดับ</th>
-                <th></th>
-                <th>ชื่อ-นามสกุล</th>
+                <th>ชื่อบริษัท</th>
+                <th class="text-right">Client limit</th>
+                <th class="text-right">Console Limit</th>
+                <th class="text-right">License Plant</th>
+                <th class="text-center">Start Date</th>
+                <th class="text-center">Expire Date</th>
+                <th class="text-right">Date Amout</th>
                 <th></th>
             </tr>
         </thead>
@@ -17,11 +22,16 @@
                 {
                     <tr>
                         <td class="text-align-center">@Rows.</td>
-                        <td>@list.Customername </td>
-                        <td>@list.Amount</td>
+                        <td>@list.Customername</td>
+                        <td class="text-right">@list.ClientsLimit</td>
+                        <td class="text-right">@list.ConsoleLimit </td>
+                        <td class="text-right">@list.LicensePlan </td>
+                        <td class="text-center">@list.StartDate</td>
+                        <td class="text-center">@list.ExpireDate</td>
+                        <td class="text-right" style="color:red">@list.Amount วัน</td>
                         <td class="text-align-center">
-                            <button class="btn btn-warning btn-xs edit" value="@list.LicenseId" style="font-size:10px;" data-toggle="modal" id="edit" data-target="#ButtonEdit"><i class="fa fa-pencil"></i> แก้ไข</button>
-                            <button class="btn btn-danger btn-xs  delete" value="@list.LicenseId" style="font-size:10px;"><i class="fa fa-eraser"></i> ลบ</button>
+                            <button class="btn btn-warning btn-xs  edit" value="@list.LicenseId" style="font-size:10px;" data-toggle="modal" id="edit" data-target="#ButtonEdit"><i class="fa fa-pencil"></i> แก้ไข</button>
+                            <button class="btn btn-danger btn-xs   delete" value="@list.LicenseId" style="font-size:10px;"><i class="fa fa-eraser"></i> ลบ</button>
                         </td>
                     </tr>
                     Rows++;

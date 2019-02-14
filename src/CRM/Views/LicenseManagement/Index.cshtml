@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "_Layout";
-    ViewData["Title"] = "ระบบจัดการผู้ใชังาน";
+    ViewData["Title"] = ViewBag.CustomerName;
 
 }
 <div id="content">
@@ -33,6 +33,8 @@
     </section>
 </div>
 
+
+<input type="hidden" value="@ViewBag.CustomerId" id="CustomerId">
 
 @* lightbox *@
 @* Create *@
