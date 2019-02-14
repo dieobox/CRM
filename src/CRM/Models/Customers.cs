@@ -21,6 +21,6 @@ namespace CRM.Models
         public string Mobile { get; set; }
         public string Email { get; set; }
         public string ContactPerson { get; set; }
-        
+        public string CustomerId { get; internal set; }
     }
 }
