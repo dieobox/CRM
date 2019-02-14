@@ -51,6 +51,51 @@
                 })
             });
         });
+
+
+        $("#jsonShow").on("click", ".delete", function () {
+            var Id = $(this).val();
+            $.SmartMessageBox({
+                title: "คำเตือน!",
+                content: "ต้องการลบรายการนี้หรือไม่?",
+                buttons: '[ไม่][ใช่]'
+            }, function (ButtonPressed) {
+                if (ButtonPressed == "ใช่") {
+                    $.get("/LicensePlantManagement/Delete", { "LicensePlantId": Id }, function (Result) {
+                        if (Result.valid == true) {
+                            $.smallBox({
+                                title: Result.message,
+                                content: "<i class='fa fa-clock-o'></i> <i>" + Result.message + "</i>",
+                                color: "#296191", // red color code #FB0404
+                                iconSmall: "fa fa-thumbs-up bounce animated",
+                                timeout: 1000
+                            });
+                            setTimeout(function () {
+                                window.location.href = "/LicensePlantManagement/Index";
+                            }, 2000)
+                        } else {
+                            $.smallBox({
+                                title: Result.message,
+                                content: "<i class='fa fa-clock-o'></i> <i>" + Result.message + "</i>",
+                                color: "#FB0404", // red color code #FB0404
+                                iconSmall: "fa fa-thumbs-up bounce animated",
+                                timeout: 1000
+                            });
+                            setTimeout(function () {
+                                window.location.href = "/LicensePlantManagement/Index";
+                            }, 2000)
+                        }
+                    })
+                }
+                if (ButtonPressed == "ไม่") {
+
+                }
+            });
+            e.preventDefault();
+
+        });
+
+
     });
 
 

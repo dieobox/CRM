@@ -45,7 +45,7 @@ namespace CRM.Controllers
         public IActionResult Index(string CustomerId)
         {
             ViewBag.CustomerId = CustomerId;
-            ViewBag.CustomerName = DB.Customers.Where(w => w.CustomerId == CustomerId).Select(s => s.CompanyName).FirstOrDefault();
+            ViewBag.CustomerName = DB.Customers.Where(w => w.LicensePlantId == CustomerId).Select(s => s.CompanyName).FirstOrDefault();
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace CRM.Controllers
             foreach (var Get in DB.Licenses.Where(w=>w.CustomerId == CustomerId))
             {
                 var Model = new GetLicenseViewModels();
-                Model.Customername = Customer.Where(w => w.CustomerId == Get.CustomerId).Select(s=>s.CompanyName).FirstOrDefault();
+                Model.Customername = Customer.Where(w => w.LicensePlantId == Get.CustomerId).Select(s=>s.CompanyName).FirstOrDefault();
                 Model.ClientsLimit = Get.ClientsLimit;
                 Model.ConsoleLimit = Get.ConsoleLimit;
                 Model.LicenseId = Get.LicenseId;

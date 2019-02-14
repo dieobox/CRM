@@ -90,7 +90,7 @@ namespace CRM.Controllers
         public IActionResult FormEdit(int LicensePlantId)
         {
             var Get = DB.Licenses_Plant.Where(w => w.LicensePlantId == LicensePlantId).FirstOrDefault();
-            return PartialView("FormEdit",Get);
+            return PartialView("FormEdit", Get);
         }
 
         [HttpPost]
@@ -112,5 +112,30 @@ namespace CRM.Controllers
             }
             return Json(new { valid = true, message = msg });
         }
+
+        [HttpGet]
+        public IActionResult Delete(int LicensePlantId)
+        {
+            string msg = "";
+            try
+            {
+                var Get = DB.Licenses_Plant.Where(w => w.LicensePlantId == LicensePlantId).FirstOrDefault();
+                if (DB.Licenses.Where(w => w.LicensePlan==Get.LicensePlantNumber).Count()>0)
+                {
+                    return Json(new { valid = false, message = "ไม่สามารถลบได้" });
+                }
+
+                DB.Licenses_Plant.Remove(Get);
+                DB.SaveChanges();
+                msg = "ลบสำเร็จ";
+                
+            }
+            catch (Exception e)
+            {
+                msg = "Error is : " + e.Message;
+                return Json(new { valid = false, message = msg });
+            }
+            return Json(new { valid = true, message = msg });
+        }
     }
-}
+    }

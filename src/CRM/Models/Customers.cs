@@ -12,7 +12,7 @@ namespace CRM.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string CustomerId { get; set; }
+        public string LicensePlantId { get; set; }
         public string CompanyName { get; set; }
         public string TaxId { get; set; }
         public string Address { get; set; }
