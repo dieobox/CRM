@@ -1,15 +1,14 @@
 ﻿@{
     Layout = "_Layout";
-    ViewData["Title"] = "สนทนาฮาเฮ";
+  
 
 }
 <div id="content">
     <section id="widget-grid" class="">
         <div class="row">
             <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-bottom-5">
-                <button class="btn btn-success" data-toggle="modal" id="add" data-target="#ButtonAdd"><i class="fa fa-plus"></i> เพิ่มข้อมูล</button>
-                <button class="btn btn-warning" id="license"><i class="fa fa-plus"></i> เพิ่ม License</button>
-                <button class="btn btn-danger" id="comment"><i class="fa fa-plus"></i> เพิ่ม commect</button>
+                <button class="btn btn-success" data-toggle="modal" id="add" data-target="#ButtonAdd"><i class="fa fa-plus"></i> บันทึกข้อมูล</button>
+
             </article>
         </div>
     </section>
@@ -18,13 +17,13 @@
             <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
                     <header>
-                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                        <h2>@ViewData["Title"]</h2>
+                        <span class="widget-icon"> <i class="fa fa-arrow-down"></i> </span>
+                        <h2>@ViewBag.CustomerName</h2>
                     </header>
                     <div>
                         <div class="jarviswidget-editbox"></div>
                         <div class="widget-body no-padding">
-                            <!--- All Users -->
+                            <!--- All Comment -->
                             <div id="JsonShow"></div>
                             <!--------->
                         </div>
@@ -34,6 +33,8 @@
         </div>
     </section>
 </div>
+
+<input type="hidden" id="CustomerId" value="@ViewBag.CustomerId">
 
 
 @* lightbox *@
@@ -75,5 +76,5 @@
     <!-- JQUERY MASKED INPUT -->
     <script src="/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
     <!-- Custom -->
-    <script src="~/js/customJS/customer/Index.js"></script>
+    <script src="~/js/customJS/comments/Index.js"></script>
 }
