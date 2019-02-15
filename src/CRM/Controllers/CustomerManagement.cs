@@ -63,7 +63,7 @@ namespace CRM.Controllers
             string msg = "";
             try
             {
-                Model.LicensePlantId = Guid.NewGuid().ToString("N");
+                Model.CustomerId = Guid.NewGuid().ToString("N");
                 DB.Customers.Add(Model);
                 DB.SaveChanges();
                 msg = "บันทึกสำเร็จ";
@@ -79,7 +79,7 @@ namespace CRM.Controllers
         [HttpGet]
         public IActionResult FormEdit(string CustomerId)
         {
-            var Get = DB.Customers.Where(w => w.LicensePlantId == CustomerId).FirstOrDefault();
+            var Get = DB.Customers.Where(w => w.CustomerId == CustomerId).FirstOrDefault();
             return PartialView("FormEdit", Get);
         }
 
@@ -108,7 +108,7 @@ namespace CRM.Controllers
             string msg = "";
             try
             {
-                var Get = DB.Customers.Where(w => w.LicensePlantId == CustomerId).FirstOrDefault();
+                var Get = DB.Customers.Where(w => w.CustomerId == CustomerId).FirstOrDefault();
                 DB.Remove(Get);
                 DB.SaveChanges();
                 msg = "ลบสำเร็จ";

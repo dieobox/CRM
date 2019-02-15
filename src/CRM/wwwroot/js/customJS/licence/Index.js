@@ -88,6 +88,59 @@
                 })
             });
         });
+
+        $("#jsonShow").on("click", ".delete", function () {
+            var Id = $(this).val();
+            var CustomerId = $("#CustomerId").val();
+            $.SmartMessageBox({
+                title: "แจ้งเตือน",
+                content: "กรุณากรอกรหัสสำหรับการลบ",
+                buttons: "[Cancle][Ok]",
+                input: "password",
+                placeholder: "",
+                val :      null
+            }, function (ButtonPress, Value) {
+                if (ButtonPress == "Ok") {
+                    $("#txt1").attr("value", "");
+                    if (Value != "") {
+                        $.get("/Licensemanagement/Delete", { "LicenseId": Id, "Password": Value }, function (Result) {
+                            if (Result.valid == true) {
+                                $.smallBox({
+                                    title: Result.message,
+                                    content: "<i class='fa fa-clock-o'></i> <i>" + Result.message + "</i>",
+                                    color: "#296191",
+                                    iconSmall: "fa fa-thumbs-up bounce animated",
+                                    timeout: 1000
+                                });
+                                setTimeout(function () {
+                                    window.location.href = "/Licensemanagement/Index?CustomerId=" + CustomerId;
+                                }, 1000)
+                            } else {
+                                $.smallBox({
+                                    title: Result.message,
+                                    content: "<i class='fa fa-clock-o'></i> <i>" + Result.message + "</i>",
+                                    color: "#FB0404",
+                                    iconSmall: "fa fa-thumbs-up bounce animated",
+                                    timeout: 1000
+                                });
+                                setTimeout(function () {
+                                    window.location.href = "/Licensemanagement/Index?CustomerId=" + CustomerId;
+                                }, 1000)
+                            }
+                        })
+                    }
+                    else {
+                        $.smallBox({
+                            title: "กรุณากรอกรหัส",
+                            content: "<i class='fa fa-clock-o'></i> <i>กรุณากรอกรหัส</i>",
+                            color: "#FB0404",
+                            iconSmall: "fa fa-thumbs-up bounce animated",
+                            timeout: 1000
+                        });
+                    }
+                }
+            });
+        });
     });
 
 

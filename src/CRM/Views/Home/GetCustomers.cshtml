@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CRM.Models.Customers>
+
+<div class="panel panel-default">
+    <div class="panel-body status">
+        <div class="who clearfix">
+            <span class="name"><b>รายชื่อลูกค้า</b> Customer</span>
+            <span class="from"><b>ณ วันที่</b> @ViewBag.DateTimeNow</span>
+            <table class="table table-hover margin-top-10">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th><i class="fa fa-home"></i></th>
+                        <th><i class="fa fa-phone"></i></th>
+                        <th><i class="fa fa-user"></i></th>
+                        <th><i class="fa fa-key"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int Count = 1;
+                        foreach (var Get in Model.Take(10))
+                        {
+                            <tr>
+                                <td>@Count.</td>
+                                <td>@Get.CompanyName</td>
+                                <td>@Get.Mobile</td>
+                                <td>@Get.ContactPerson</td>
+                                <td><a href="/licenseManagement/Index?CustomerId=@Get.CustomerId" title="license"><i class="fa fa-search"></i></a></td>
+                            </tr>
+                            Count++;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

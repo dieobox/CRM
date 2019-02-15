@@ -32,6 +32,14 @@
                         </fieldset>
                         <fieldset>
                             <div class="form-group">
+                                <label class="col-lg-3 control-label">License Plan</label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownList("LicensePlan", (IEnumerable<SelectListItem>)ViewBag.LicensePlant, new { @style = "width:100%" })
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
                                 <label class="col-lg-3 control-label">Client Limit</label>
                                 <div class="col-lg-6">
                                     <input type="text" class="form-control" asp-for="ClientsLimit" 
@@ -54,35 +62,6 @@
                                 </div>
                             </div>
                         </fieldset>
-                        <fieldset>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">License Plan</label>
-                                <div class="col-lg-6">
-                                    @Html.DropDownList("LicensePlan", (IEnumerable<SelectListItem>) ViewBag.LicensePlant, new { @style="width:100%"})
-                                </div>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Dealer Name</label>
-                                <div class="col-lg-6">
-                                    <input type="text" class="form-control" asp-for="DealerName"
-                                           data-bv-notempty="true"
-                                           data-bv-notempty-message="กรุณากรอก DealerName" />
-                                </div>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Sale Name</label>
-                                <div class="col-lg-6">
-                                    <input type="text" class="form-control" asp-for="SaleName"
-                                           data-bv-notempty="true"
-                                           data-bv-notempty-message="กรุณากรอก Sale Name" />
-                                </div>
-                            </div>
-                        </fieldset>
-
                         <fieldset>
                             <div class="form-group">
                                 <label class="col-xs-3 col-md-3 col-lg-3 control-label">Start Date</label>
@@ -173,6 +152,28 @@
                                 </div>
                             </div>
                         </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Dealer Name</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="DealerName"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอก DealerName" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Sale Name</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" asp-for="SaleName"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอก Sale Name" />
+                                </div>
+                            </div>
+                        </fieldset>
+
+                   
 
                         <input type="hidden" asp-for="CustomerId" value="@ViewBag.CustomerId">
                         <div class="form-actions">

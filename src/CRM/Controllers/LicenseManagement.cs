@@ -45,7 +45,7 @@ namespace CRM.Controllers
         public IActionResult Index(string CustomerId)
         {
             ViewBag.CustomerId = CustomerId;
-            ViewBag.CustomerName = DB.Customers.Where(w => w.LicensePlantId == CustomerId).Select(s => s.CompanyName).FirstOrDefault();
+            ViewBag.CustomerName = DB.Customers.Where(w => w.CustomerId == CustomerId).Select(s => s.CompanyName).FirstOrDefault();
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace CRM.Controllers
             foreach (var Get in DB.Licenses.Where(w=>w.CustomerId == CustomerId))
             {
                 var Model = new GetLicenseViewModels();
-                Model.Customername = Customer.Where(w => w.LicensePlantId == Get.CustomerId).Select(s=>s.CompanyName).FirstOrDefault();
+                Model.Customername = Customer.Where(w => w.CustomerId == Get.CustomerId).Select(s=>s.CompanyName).FirstOrDefault();
                 Model.ClientsLimit = Get.ClientsLimit;
                 Model.ConsoleLimit = Get.ConsoleLimit;
                 Model.LicenseId = Get.LicenseId;
@@ -132,7 +132,32 @@ namespace CRM.Controllers
             }
             return Json(new { valid = true, message = msg });
         }
-        
+
+        [HttpGet]
+        public IActionResult Delete(int LicenseId, string Password)
+        {
+            string msg = "";
+            try
+            {
+                string PasswordCheck = "tnS12345P@ssw0rd!!";
+                if (PasswordCheck != Password)
+                {
+                    return Json(new { valid = false, message = "รหัสผ่านไม่ถูกต้อง" });
+                }
+
+                var Get = DB.Licenses.Where(w => w.LicenseId == LicenseId).FirstOrDefault();
+                DB.Licenses.Remove(Get);
+                DB.SaveChanges();
+                msg = "บันทึกสำเร็จ";
+            }
+            catch (Exception error)
+            {
+                msg = "Error is : " + error.Message;
+                return Json(new { valid = false, message = msg });
+            }
+            return Json(new { valid = true, message = msg });
+        }
+
         // helper
         public string GetnerateProductId()
         {

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<CRM.ViewModels.Home.BestSellerViewModels>
+
+<div class="panel panel-default">
+    <div class="panel-body status">
+        <div class="who clearfix">
+            <span class="name"><b>Best Seller </b> Product Verstion</span>
+            <span class="from"><b>ณ วันที่ </b> @ViewBag.DateTimeNow</span>
+        </div>
+        <ul class="comments">
+            @{
+                int Count = 1;
+                string[] color = {"", "RED", "GREEN", "SALMON", "LIME", "MAROON", "YELLOW", "OLIVE", "AQUA" };
+                foreach (var Get in Model.OrderByDescending(o=>o.Amount))
+                {
+                    <li style="padding-left:0px;color:@color[Count]">
+                        @Count. @Get.Name <span class="badge bg-color-greenLight txt-color-white"> @Get.Amount รายการ</span> 
+                    </li>
+                    Count++;
+                }
+            }
+        </ul>
+    </div>
+</div>

@@ -10,6 +10,7 @@ using CRM.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
+using CRM.ViewModels.Home;
 
 namespace CRM.Controllers
 {
@@ -21,6 +22,7 @@ namespace CRM.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private ApplicationDbContext DB;
         private IHostingEnvironment _environment;
+        public CRM.Helpers.Utility Helper;
 
         public HomeController(
             UserManager<ApplicationUser> userManager,
@@ -35,11 +37,48 @@ namespace CRM.Controllers
             _roleManager = roleManager;
             DB = db;
             _environment = environment;
+            Helper = new CRM.Helpers.Utility(_signInManager, DB);
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
+            
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult GetCustomers()
+        {
+            ViewBag.DateTimeNow = Helper.getFullDateAndTime(DateTime.Now);
+            var Gets = DB.Customers;
+            return PartialView("GetCustomers", Gets);
+        }
+
+        [HttpGet]
+        public IActionResult GetUsers()
+        {
+            var Gets = DB.Users;
+            return PartialView("GetUsers", Gets);
+        }
+
+        [HttpGet]
+        public IActionResult BestSellerProduct()
+        {
+            ViewBag.DateTimeNow = Helper.getFullDateAndTime(DateTime.Now);
+            var ViewModels = new List<BestSellerViewModels>();
+            var Gets = DB.Licenses_Plant;
+            var License = DB.Licenses;
+            foreach (var Get in Gets)
+            {
+                var Model = new BestSellerViewModels();
+                Model.Id = Get.LicensePlantId;
+                Model.Name = Get.LicensePlantName;
+                Model.Amount = License.Where(w => w.LicensePlan == Get.LicensePlantNumber).Count();
+                ViewModels.Add(Model);
+            }
+
+            return PartialView("BestSellerProduct", ViewModels);
         }
     }
 }
