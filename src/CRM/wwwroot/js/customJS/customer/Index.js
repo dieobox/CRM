@@ -72,7 +72,7 @@
                             });
                             setTimeout(function () {
                                 window.location.href = "/CustomerManagement/Index";
-                            }, 100)
+                            }, 1000)
                         } else {
                             $.smallBox({
                                 title: Result.message,
@@ -83,7 +83,7 @@
                             });
                             setTimeout(function () {
                                 window.location.href = "/CustomerManagement/Index";
-                            }, 100)
+                            }, 1000)
                         }
                     })
                 }

@@ -108,6 +108,12 @@ namespace CRM.Controllers
             string msg = "";
             try
             {
+                if (DB.Licenses.Where(w=>w.CustomerId == CustomerId).Count() > 0 || DB.Comments.Where(w=>w.CustomerId == CustomerId).Count() > 0)
+                {
+                    return Json(new { valid = false, message = "กรุณาตรวจสอบข้อมูล" });
+                }
+
+
                 var Get = DB.Customers.Where(w => w.CustomerId == CustomerId).FirstOrDefault();
                 DB.Remove(Get);
                 DB.SaveChanges();

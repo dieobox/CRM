@@ -25,7 +25,10 @@
                                 <p>
                                     @item.Comment <br>
                                     <hr>
-                                    <small><strong>โดย:</strong> @item.CommentBy </small>
+                                    <small><strong>โดย:</strong> <span style="color:red"> @item.CommentBy </span></small><br>
+                                </p>
+                                <p class="text-align-right" style="padding-right:20px;">
+                                    <small><a href="Javascript:void(0)" class="delete" data-val="@item.CommentId"><i class="fa fa-eraser"></i> ลบ</a></small>
                                 </p>
                             </div>
                         </li>

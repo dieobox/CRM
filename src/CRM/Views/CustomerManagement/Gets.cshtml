@@ -19,13 +19,23 @@
                 int Rows = 1;
                 foreach (var list in Model)
                 {
+
                     <tr>
                         <td class="text-align-center">@Rows.</td>
-                        <td class="text-center"><input type="radio" class="Choose" name="Choose" value="@list.CustomerId"></td>
+                        <td class="text-center">
+                            @{
+                                string Checke = "";
+                                if (Rows == 1)
+                                {
+                                    Checke = "checked";
+                                }
+                            }
+                            <input type="radio" class="Choose" name="Choose" value="@list.CustomerId" @Checke>
+                        </td>
                         <td>@list.CompanyName </td>
                         <td>@list.Tel</td>
                         <td>@list.Mobile</td>
-                        <td>@list.Email</td>
+                        <td><a href="mailto:@list.Email">@list.Email</a></td>
                         <td>@list.ContactPerson</td>
                         <td class="text-align-center">
                             <button class="btn btn-warning btn-xs edit" value="@list.CustomerId" style="font-size:10px;" data-toggle="modal" id="edit" data-target="#ButtonEdit"><i class="fa fa-pencil"></i> แก้ไข</button>

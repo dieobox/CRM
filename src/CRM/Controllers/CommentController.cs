@@ -101,6 +101,25 @@ namespace CRM.Controllers
             }
             return Json(new { valid = true, message = msg });
         }
+
+        [HttpGet]
+        public IActionResult Delete(int CommentId)
+        {
+            string msg = "";
+            try
+            {
+                var Get = DB.Comments.Where(w => w.CommentId == CommentId).FirstOrDefault();
+                DB.Comments.Remove(Get);
+                DB.SaveChanges();
+                msg = "ลบข้อมูลสำเร็จ";
+            }
+            catch (Exception error)
+            {
+                msg = "Error is : " + error.Message;
+                return Json(new { valid = false, message = msg });
+            }
+            return Json(new { valid = true, message = msg });
+        }
         
     }
 }

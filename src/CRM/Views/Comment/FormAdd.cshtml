@@ -26,7 +26,9 @@
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">เรื่อง/หัวข้อเรื่อง</label>
                                 <div class="col-lg-6">
-                                    <input type="text" class="form-control" asp-for="Title"/>
+                                    <input type="text" class="form-control" asp-for="Title"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอกเรื่อง/หัวข้อเรื่อง"/>
                                 </div>
                             </div>
                         </fieldset>
@@ -34,7 +36,9 @@
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">ข้อความ</label>
                                 <div class="col-lg-6">
-                                    <textarea class="form-control" asp-for="Comment"/>
+                                    <textarea class="form-control" asp-for="Comment"
+                                           data-bv-notempty="true"
+                                           data-bv-notempty-message="กรุณากรอกข้อความ"/>
                                 </div>
                             </div>
                         </fieldset>
@@ -49,7 +53,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
