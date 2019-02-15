@@ -110,9 +110,8 @@
                 return false;
             }
             else {
-
-            } window.location.href = "/licenseManagement/Index?CustomerId=" + CustomerId;
-            
+                window.location.href = "/licenseManagement/Index?CustomerId=" + CustomerId;
+            } 
         });
 
         $("#comment").on("click", function () {
@@ -128,10 +127,10 @@
 
                 return false;
             }
-            else {
+            else
+            {
                 window.location.href = "/Comment/Index?CustomerId=" + CustomerId;
             } 
-           
         });
 
     });

@@ -1,5 +1,5 @@
 ﻿$(function () {
-    $.get("/Comment/Gets", function (Result) {
+    $.get("/Comment/Gets",{"CustomerId" : $("#CustomerId").val()} ,function (Result) {
         $("#JsonShow").html(Result);
 
         $("#add").on("click", function () {
@@ -31,7 +31,7 @@
                                         timeout: 2000
                                     });
                                     setTimeout(function () {
-                                        window.location.href = "/Comment/Index?CustomerId=" + CustomerId;
+                                        window.location.href = "/Comment/Index?CustomerId=" + Id;
                                     }, 1000)
                                 } else {
                                     $.smallBox({
@@ -42,7 +42,7 @@
                                         timeout: 2000
                                     });
                                     setTimeout(function () {
-                                        window.location.href = "/Comment/Index?CustomerId=" + CustomerId;
+                                        window.location.href = "/Comment/Index?CustomerId=" + Id;
                                     }, 1000)
                                 }
                             }

@@ -42,10 +42,15 @@ namespace CRM.Controllers
         // GET: /Account/Login
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Login(string returnUrl = null)
+        public async Task<IActionResult> Login(string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
-            return View();
+            // We do not want to use any existing identity information
+            await EnsureLoggedOut();
+
+            // Store the originating URL so we can attach it to a form field
+            var viewModel = new LoginViewModel { ReturnUrl = returnUrl };
+
+            return View(viewModel);
         }
 
         //
@@ -453,17 +458,39 @@ namespace CRM.Controllers
             return _userManager.GetUserAsync(HttpContext.User);
         }
 
-        private IActionResult RedirectToLocal(string returnUrl)
+        // POST: /Account/LogOff
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LogOff()
+        {
+            await _signInManager.SignOutAsync();
+
+            // Clear the principal to ensure the user does not retain any authentication
+            HttpContext.User = new GenericPrincipal(new GenericIdentity(string.Empty), null);
+
+            _logger.LogInformation(4, "User logged out.");
+
+            return RedirectToLocal();
+        }
+
+        private IActionResult RedirectToLocal(string returnUrl = null)
         {
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
             }
-            else
-            {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
-            }
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
+
+        private async Task EnsureLoggedOut()
+        {
+            // If the request is (still) marked as authenticated we send the user to the logout action
+            if (User.Identity.IsAuthenticated)
+                await LogOff();
+        }
+
+        
+
 
         #endregion
     }

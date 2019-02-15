@@ -1,11 +1,14 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@using CRM.Helper
+@using Microsoft.AspNetCore.Identity
 @using CRM.Models
+@using System.Web.Mvc.Html;
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@inject Microsoft.Extensions.Options.IOptions<Settings> Settings
 @{var currentUser = await UserManager.FindByIdAsync(UserManager.GetUserId(User)); }
 <!DOCTYPE html>
-<html lang="en-us" id="@ViewBag.PageId" class="">
+<html lang="en-us" id="@ViewBag.PageId" class="@Settings.Value.CurrentTheme">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -17,17 +20,12 @@
     <link rel="stylesheet" type="text/css" media="screen" href="~/css/setFontTH.css">
     <link rel="stylesheet" type="text/css" media="screen" href="~/css/TSApp.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="~/css/datepicker.css">
-
-
     <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
     <link rel="stylesheet" type="text/css" media="screen" href="~/css/TSApp-production-plugins.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="~/css/TSApp-production.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="~/css/TSApp-skins.min.css">
-
     <!-- SmartAdmin RTL Support -->
     <link rel="stylesheet" type="text/css" media="screen" href="/css/TSApp-rtl.min.css">
-
-
     <!-- FAVICONS -->
     <link rel="shortcut icon" href="~/img/favicon/favicon.ico" type="image/x-icon">
     <link rel="icon" href="~/img/favicon/favicon.ico" type="image/x-icon">
@@ -45,32 +43,26 @@
     <link rel="apple-touch-startup-image" href="~/img/Logo-Organozation/Logo.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="~/img/Logo-Organozation/Logo.png" media="screen and (max-device-width: 320px)">
 </head>
-<body class="@ViewBag.PageClass">
+<body class="@ViewBag.PageClass @Settings.Value.CurrentTheme">
     <header id="header">
         @{ await Html.RenderPartialAsync("_Header"); }
         <section id="top-right">
             @(IsSectionDefined("topright") ? RenderSection("topright", false) : Html.Partial("_TopRight"))
         </section>
     </header>
-    @if (User.Identity.IsAuthenticated)
-    {
-        Html.RenderPartial("_Aside", User.Identity.IsAuthenticated);
-    }
+    @{ Html.RenderPartialIf("_Aside", User.Identity.IsAuthenticated); }
     <div id="main" role="main">
-        @if (User.Identity.IsAuthenticated)
-        {
-            Html.RenderPartial("_Ribbon", User.Identity.IsAuthenticated);
-        }
+       @{ Html.RenderPartialIf("_Ribbon", User.Identity.IsAuthenticated); }
 
         @RenderBody()
-
+        
     </div>
     @if (User.Identity.IsAuthenticated)
     {
         await Html.RenderPartialAsync("_Footer");
+        Html.RenderPartialIf("_Tiles", Settings.Value.EnableTiles);
     }
     @{ await Html.RenderPartialAsync("_Scripts"); }
-
     @RenderSection("scripts", false)
 </body>
 </html>

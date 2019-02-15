@@ -51,9 +51,9 @@ namespace CRM.Controllers
         }
 
         [HttpGet]
-        public IActionResult Gets()
+        public IActionResult Gets(string CustomerId)
         {
-            var Gets = DB.Comments;
+            var Gets = DB.Comments.Where(w=>w.CustomerId == CustomerId).ToList();
             var User = DB.Users;
             var Customer = DB.Customers;
             var ViewModels = new List<GetCommentViewModels>();

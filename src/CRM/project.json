@@ -41,7 +41,8 @@
     "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    }
+    },
+    "ReallySimpleFeatureToggle.Web.Mvc": "1.1.63"
   },
 
   "tools": {

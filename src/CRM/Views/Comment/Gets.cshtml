@@ -4,35 +4,46 @@
     <div class="smart-timeline">
         <ul class="smart-timeline-list">
             @{
-                string[] Icon = {"", "file-text", "bar-chart-o", "user", "pencil", "file-text", "bar-chart-o", "user", "pencil", "file-text", "bar-chart-o", "user", "pencil", "file-text", "bar-chart-o", "user", "pencil", "file-text", "bar-chart-o", "user", "pencil", "file-text", "bar-chart-o", "user", "pencil", "file-text", "bar-chart-o", "user", "pencil", "file-text", "bar-chart-o", "user", "pencil" };
-                int Count = 1;
-                foreach (var item in Model)
+                if (Model.Count() > 0)
+                {
+                    string[] Icon = {"", "file-text", "bar-chart-o", "user", "pencil", "file-text", "bar-chart-o", "user", "pencil", "file-text",
+                    "bar-chart-o", "user", "pencil", "file-text", "bar-chart-o", "user", "pencil", "file-text", "bar-chart-o", "user", "pencil",
+                    "file-text", "bar-chart-o", "user", "pencil", "file-text", "bar-chart-o", "user", "pencil", "file-text", "bar-chart-o", "user", "pencil" };
+
+                    int Count = 1;
+                    foreach (var item in Model.OrderByDescending(o => o.CommentId))
+                    {
+                        <li style="margin-left:20px;">
+                            <div class="smart-timeline-icon">
+                                <i class="fa fa-@Icon[Count]"></i>
+                            </div>
+                            <div class="smart-timeline-time">
+                                <small style="color:red;">@item.CommentDate</small>
+                            </div>
+                            <div class="smart-timeline-content">
+                                <p><strong>@item.Title</strong></p>
+                                <p>
+                                    @item.Comment <br>
+                                    <hr>
+                                    <small><strong>โดย:</strong> @item.CommentBy </small>
+                                </p>
+                            </div>
+                        </li>
+                        Count++;
+                    }
+                }
+                else
                 {
                     <li>
                         <div class="smart-timeline-icon">
-                            <i class="fa fa-@Icon[Count]"></i>
                         </div>
                         <div class="smart-timeline-time">
-                            <small>@item.CommentDate</small>
                         </div>
-                        <div class="smart-timeline-content">
-                         
-                            <p><strong>@item.Title</strong></p>
-                        
-                            <p>
-                                @item.Comment <br>
-                                <hr>
-                                <small>โดย : @item.CommentBy </small>
-                            </p>
-                        </div>
+                        <div class="smart-timeline-content">  --- ไม่มีข้อมูล --- </div>
                     </li>
-                    Count++;
                 }
+
             }
-           
-            @*<li class="text-center">
-                    <a href="javascript:void(0)" class="btn btn-sm btn-default"><i class="fa fa-arrow-down text-muted"></i> LOAD MORE</a>
-                </li>*@
         </ul>
     </div>
 </div>
