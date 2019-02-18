@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using CRM.ViewModels.Home;
+using CRM.ViewModels.Logs;
 
 namespace CRM.Controllers
 {
@@ -41,8 +42,13 @@ namespace CRM.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult>  Index()
         {
+            var CurrentUser = await _userManager.FindByIdAsync(_userManager.GetUserId(User));
+            if (DB.Logs.Where(w=>w.ActionDate.Year == DateTime.Now.Year && w.ActionDate.Month == DateTime.Now.Month && w.ActionDate.Day == DateTime.Now.Day && w.UserId == CurrentUser.Id).Count() == 0)
+            {
+                Logs(CurrentUser.Id);
+            }
             
             return View();
         }
@@ -74,11 +80,45 @@ namespace CRM.Controllers
                 var Model = new BestSellerViewModels();
                 Model.Id = Get.LicensePlantId;
                 Model.Name = Get.LicensePlantName;
-                Model.Amount = License.Where(w => w.LicensePlan == Get.LicensePlantNumber).Count();
+                Model.Amount = License.Where(w => w.LicensePlan == Convert.ToInt32(Get.LicensePlantNumber)).Count();
                 ViewModels.Add(Model);
             }
 
             return PartialView("BestSellerProduct", ViewModels);
+        }
+
+        [HttpGet]
+        public IActionResult LogsView()
+        {
+            var User = DB.Users;
+            var ViewModels = new List<LogsViewModes>();
+            var Gets = DB.Logs.Take(5).OrderByDescending(o=>o.LogId).ToList();
+            foreach (var Get in Gets)
+            {
+                var Model = new LogsViewModes();
+                Model.UserId = User.Where(w => w.Id == Get.UserId).Select(s => s.FirstName + " " + s.LastName).FirstOrDefault();
+                Model.Img = User.Where(w => w.Id == Get.UserId).Select(s => s.PictureFile).FirstOrDefault();
+                Model.Controller = Get.Controllers;
+                Model.Action = Get.Action;
+                Model.ActionDate = Helper.getShortDate(Get.ActionDate);
+                Model.TimeAgo = Helper.TimeAgo(Get.ActionDate);
+                ViewModels.Add(Model);
+            }
+            return PartialView("LogsView", ViewModels);
+        }
+
+        [HttpGet]
+        public IActionResult Logs(string UserId)
+        {
+            var GetLog = new Logs();
+            GetLog.UserId = UserId;
+            GetLog.Controllers = RouteData.Values["controller"].ToString();
+            GetLog.Action = RouteData.Values["action"].ToString();
+            GetLog.IP = HttpContext.Connection.RemoteIpAddress.ToString();
+            GetLog.ActionDate = DateTime.Now;
+            DB.Logs.Add(GetLog);
+            DB.SaveChanges();
+            return null;
         }
     }
 }

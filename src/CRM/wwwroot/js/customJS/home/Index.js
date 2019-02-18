@@ -10,4 +10,8 @@
     $.get("/Home/BestSellerProduct", function (rs) {
         $("#BestSellers").html(rs);
     });
+
+    $.get("/Home/LogsView", function (rs) {
+        $("#LogView").html(rs);
+    });
 });

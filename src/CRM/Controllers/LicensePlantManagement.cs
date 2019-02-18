@@ -11,7 +11,6 @@ using CRM.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CRM.Controllers
 {
@@ -120,7 +119,7 @@ namespace CRM.Controllers
             try
             {
                 var Get = DB.Licenses_Plant.Where(w => w.LicensePlantId == LicensePlantId).FirstOrDefault();
-                if (DB.Licenses.Where(w => w.LicensePlan==Get.LicensePlantNumber).Count()>0)
+                if (DB.Licenses.Where(w => w.LicensePlan == Convert.ToInt32(Get.LicensePlantNumber)).Count()>0)
                 {
                     return Json(new { valid = false, message = "ไม่สามารถลบได้" });
                 }

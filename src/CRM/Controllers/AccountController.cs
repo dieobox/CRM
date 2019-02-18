@@ -12,6 +12,7 @@ using CRM.Models;
 using CRM.Models.AccountViewModels;
 using CRM.Services;
 using System.Security.Principal;
+using CRM.Data;
 
 namespace CRM.Controllers
 {
@@ -23,18 +24,21 @@ namespace CRM.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
+        private ApplicationDbContext DB;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             ISmsSender smsSender,
+            ApplicationDbContext db,
             ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
+            DB = db;
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
 
@@ -138,6 +142,9 @@ namespace CRM.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> LogOff(string returnUrl)
         {
+            var CurrentUser = await _userManager.FindByIdAsync(_userManager.GetUserId(User));
+
+            Logs(CurrentUser.Id);
             await _signInManager.SignOutAsync();
             HttpContext.User = new GenericPrincipal(new GenericIdentity(string.Empty), null);
             _logger.LogInformation(4, "User logged out.");
@@ -489,9 +496,21 @@ namespace CRM.Controllers
                 await LogOff();
         }
 
-        
 
 
+        [HttpGet]
+        public IActionResult Logs(string UserId)
+        {
+            var GetLog = new Logs();
+            GetLog.UserId = UserId;
+            GetLog.Controllers = RouteData.Values["controller"].ToString();
+            GetLog.Action = RouteData.Values["action"].ToString();
+            GetLog.IP = HttpContext.Connection.RemoteIpAddress.ToString();
+            GetLog.ActionDate = DateTime.Now;
+            DB.Logs.Add(GetLog);
+            DB.SaveChanges();
+            return null;
+        }
         #endregion
     }
 }

@@ -62,7 +62,7 @@ namespace CRM.Controllers
                 Model.ClientsLimit = Get.ClientsLimit;
                 Model.ConsoleLimit = Get.ConsoleLimit;
                 Model.LicenseId = Get.LicenseId;
-                Model.LicensePlan = LicensePlate.Where(w => w.LicensePlantNumber == Get.LicensePlan).Select(s => s.LicensePlantName).FirstOrDefault(); ;
+                Model.LicensePlan = LicensePlate.Where(w => w.LicensePlantNumber == Get.LicensePlan).Select(s => s.LicensePlantName).FirstOrDefault();
                 Model.Amount = Math.Round(Math.Abs((Get.ExpireDate - DateTime.Now).TotalDays));
                 Model.StartDate = Helper.getShortDate(Get.StartDate);
                 Model.ExpireDate = Helper.getShortDate(Get.ExpireDate);
@@ -134,8 +134,9 @@ namespace CRM.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int LicenseId, string Password)
+        public async Task<IActionResult>  Delete(int LicenseId, string Password)
         {
+            var CurrentUser = await _userManager.FindByIdAsync(_userManager.GetUserId(User));
             string msg = "";
             try
             {
@@ -148,6 +149,7 @@ namespace CRM.Controllers
                 var Get = DB.Licenses.Where(w => w.LicenseId == LicenseId).FirstOrDefault();
                 DB.Licenses.Remove(Get);
                 DB.SaveChanges();
+                Logs(CurrentUser.Id);
                 msg = "บันทึกสำเร็จ";
             }
             catch (Exception error)
@@ -220,6 +222,19 @@ namespace CRM.Controllers
             }
 
             return Json(ViewBag.Day);
+        }
+
+        public IActionResult Logs(string UserId)
+        {
+            var GetLog = new Logs();
+            GetLog.UserId = UserId;
+            GetLog.Controllers = RouteData.Values["controller"].ToString();
+            GetLog.Action = RouteData.Values["action"].ToString();
+            GetLog.IP = HttpContext.Connection.RemoteIpAddress.ToString();
+            GetLog.ActionDate = DateTime.Now;
+            DB.Logs.Add(GetLog);
+            DB.SaveChanges();
+            return null;
         }
     }
 }

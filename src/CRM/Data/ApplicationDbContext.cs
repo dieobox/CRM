@@ -30,5 +30,6 @@ namespace CRM.Data
         public DbSet<Customers> Customers { get; set; }
         public DbSet<Comments> Comments { get; set; }
         public DbSet<Licenses_Plant> Licenses_Plant { get; set; }
+        public DbSet<Logs> Logs { get; set; }
     }
 }

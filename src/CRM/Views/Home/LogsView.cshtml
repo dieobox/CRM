@@ -1,0 +1,25 @@
+﻿@model IEnumerable<CRM.ViewModels.Logs.LogsViewModes>
+
+<div class="panel panel-default">
+    <div class="panel-body status">
+        <div class="who clearfix">
+            <h4><i class="fa fa-user"></i> Logs</h4>
+        </div>
+        @{
+            foreach (var item in Model.OrderByDescending(o=>o.ActionDate))
+            {
+                <div class="who clearfix">
+                    <img src="~/uploads/users/@item.Img" alt="img" class="busy">
+                    <span class="name font-sm">
+                        <span class="text-muted">โดย</span><b> @item.UserId<span class="pull-right font-xs text-muted"><i>@item.TimeAgo</i></span> </b>
+                        <br>
+                        <span style="color:red">Visited : @item.Controller / @item.Action</span><br>
+                        <span style="color:green">Time : @item.ActionDate </span>
+                    </span>
+                </div>
+            }
+        }
+        
+        
+    </div>
+</div>
